@@ -40,7 +40,7 @@ public class GeneratorController {
     public ResponseEntity<?> genFirtsMatris() {
         
         System.out.println("tamañano matris: columnas " + m.getColumns() + " filas: " + m.getRows());
-        pd.prueba();
+        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
@@ -61,8 +61,25 @@ public class GeneratorController {
     public ResponseEntity<?> getprueba() {
         System.out.println("que es m:"+m.getMartis());
         pd.GenerateRandom(m);
-        pd.prueba();
+        Tupla k=new Tupla(1,1);
+        List<Tupla> t=pd.posibilitis(k);
+        for(Tupla f:t){
+            System.out.println("Las nuevas posibilidades son: "+f.getElem1()+" : y : "+f.getElem2());
+        
+        }
+        
+        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
+    
+    //Gnerator of number the 20 cifres
+    @RequestMapping(method = RequestMethod.GET, path = "/numero")
+    public ResponseEntity<?> getNumber() {
+        
+        
+        return new ResponseEntity<>(pd.numberOfMatriz(), HttpStatus.ACCEPTED);
+    }    
+    
+    
 
 }

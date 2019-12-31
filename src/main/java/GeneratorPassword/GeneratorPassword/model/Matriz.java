@@ -21,7 +21,7 @@ public class Matriz {
     private Tupla postInitial;
     private int matris[][]=new int[5][4];
                                  //C  F
-
+    
     public Matriz() {
 
         for (int a = 0; a < 5; a++) {

@@ -31,8 +31,8 @@ public class Hourse {
     
     }
     
-    public void setPostInitial(){
-    
+    public void setPostInitial(Tupla postInitial){
+        this.postInitial=postInitial;
     }
     
     

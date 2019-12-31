@@ -6,6 +6,8 @@
 package GeneratorPassword.GeneratorPassword.services;
 
 import GeneratorPassword.GeneratorPassword.model.Matriz;
+import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
+import java.util.List;
 
 
 
@@ -16,8 +18,11 @@ import GeneratorPassword.GeneratorPassword.model.Matriz;
 public interface PaswordGeneratorServices {
  
     public void GenerateRandom(Matriz matris);
-    public void prueba();
+    //public void prueba();
+    public List<Tupla> posibilitis(Tupla position); 
     public void paintMatrs();
     public Integer getNumRandom();
+    public String numberOfMatriz();
+    
     
 }
