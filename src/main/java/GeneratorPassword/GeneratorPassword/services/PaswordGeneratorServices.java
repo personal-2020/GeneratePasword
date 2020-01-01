@@ -20,9 +20,11 @@ public interface PaswordGeneratorServices {
     public void GenerateRandom(Matriz matris);
     //public void prueba();
     public List<Tupla> posibilitis(Tupla position); 
-    public void paintMatrs();
+    public String paintMatrs();
+    public Tupla getNewPosition();
     public Integer getNumRandom();
     public String numberOfMatriz();
+     public Boolean esta(Tupla pos);
     
     
 }

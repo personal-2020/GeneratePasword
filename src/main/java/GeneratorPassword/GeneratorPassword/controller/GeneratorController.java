@@ -48,7 +48,7 @@ public class GeneratorController {
     public ResponseEntity<?> pintarMa() {
 
         pd.paintMatrs();
-        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(pd.paintMatrs(), HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/r")
@@ -71,6 +71,21 @@ public class GeneratorController {
         
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/pos")
+    public ResponseEntity<?> getPos() {
+        
+        
+        return new ResponseEntity<>(pd.getNewPosition(), HttpStatus.ACCEPTED);
+    }    
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
+    public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {
+        
+        return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
+    }
+    
+    
     
     //Gnerator of number the 20 cifres
     @RequestMapping(method = RequestMethod.GET, path = "/numero")
