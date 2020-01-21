@@ -23,7 +23,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     List<Tupla> posVi = new ArrayList<Tupla>();
 
     String numeroS = "";
-
+    private String numero="";
     Hourse ho;
     Matriz ma;
     Tupla posActual;
@@ -37,6 +37,12 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
 
     }
 
+    
+    public String getNumeroFinal(){
+        return numero;
+    }
+    
+    
     @Override
     public void GenerateRandom(Matriz matris) {
 
@@ -158,7 +164,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         for (Tupla q : posVi) {
             System.out.println("vemos los visi: " + q.getElem1() + "y: " + q.getElem2());
         }
-
+        numero=numeroS;
         return numeroS;
     }
     @Override

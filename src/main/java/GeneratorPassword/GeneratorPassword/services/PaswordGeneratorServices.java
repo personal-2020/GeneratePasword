@@ -24,7 +24,11 @@ public interface PaswordGeneratorServices {
     public Tupla getNewPosition();
     public Integer getNumRandom();
     public String numberOfMatriz();
-     public Boolean esta(Tupla pos);
+    public Boolean esta(Tupla pos);
+    public String getNumeroFinal();
+    
+    
+    
     
     
 }

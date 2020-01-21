@@ -7,6 +7,7 @@ package GeneratorPassword.GeneratorPassword.controller;
 
 import GeneratorPassword.GeneratorPassword.model.Matriz;
 import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
+import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.PasswordGeneratorStub;
 import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
 import java.util.ArrayList;
@@ -31,10 +32,18 @@ public class GeneratorController {
 
     @Autowired
     private PaswordGeneratorServices pd;
+    
+    @Autowired
+    private GeneratorNumbersServices gn;
+    
+    
     List<List<Tupla>> matDib = new ArrayList<List<Tupla>>();
 
     Tupla posInit = new Tupla(1, 1);
     Matriz m = new Matriz(4, 5, posInit);
+    private String numero;
+    
+    
 
     @RequestMapping(method = RequestMethod.GET, path = "/p1")
     public ResponseEntity<?> genFirtsMatris() {
@@ -74,8 +83,7 @@ public class GeneratorController {
     
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
     public ResponseEntity<?> getPos() {
-        
-        
+                
         return new ResponseEntity<>(pd.getNewPosition(), HttpStatus.ACCEPTED);
     }    
     
@@ -84,17 +92,12 @@ public class GeneratorController {
         
         return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
     }
-    
-    
-    
+
     //Gnerator of number the 20 cifres
     @RequestMapping(method = RequestMethod.GET, path = "/numero")
     public ResponseEntity<?> getNumber() {
         
-        
-        return new ResponseEntity<>(pd.numberOfMatriz(), HttpStatus.ACCEPTED);
+        numero=pd.numberOfMatriz();
+        return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }    
-    
-    
-
 }
