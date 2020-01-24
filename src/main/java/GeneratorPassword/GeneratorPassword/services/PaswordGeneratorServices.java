@@ -27,6 +27,8 @@ public interface PaswordGeneratorServices {
     public Boolean esta(Tupla pos);
     public String getNumeroFinal();
     
+    public List<Tupla> getVisitados();
+    
     
     
     

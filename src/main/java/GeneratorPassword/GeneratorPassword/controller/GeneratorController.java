@@ -97,7 +97,15 @@ public class GeneratorController {
     @RequestMapping(method = RequestMethod.GET, path = "/numero")
     public ResponseEntity<?> getNumber() {
         
-        numero=pd.numberOfMatriz();
-        return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
+        //numero=pd.numberOfMatriz();
+        return new ResponseEntity<>(pd.numberOfMatriz(), HttpStatus.ACCEPTED);
     }    
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/vi")
+    public ResponseEntity<?> vi() {
+
+        return new ResponseEntity<>(pd.getVisitados(), HttpStatus.ACCEPTED);
+    }    
+    
+    
 }

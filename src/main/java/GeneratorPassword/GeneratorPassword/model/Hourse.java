@@ -21,7 +21,7 @@ public class Hourse {
     
     public Hourse(){
         movements=new ArrayList<Tupla>();
-        postInitial=new Tupla(1, 1);
+        postInitial=new Tupla(1, 2);
         mov();
     }
     public Hourse(Integer  column,Integer rows ){
