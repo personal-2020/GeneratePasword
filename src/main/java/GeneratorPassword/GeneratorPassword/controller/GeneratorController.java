@@ -70,13 +70,6 @@ public class GeneratorController {
     public ResponseEntity<?> getprueba() {
         System.out.println("que es m:"+m.getMartis());
         pd.GenerateRandom(m);
-        Tupla k=new Tupla(1,1);
-        List<Tupla> t=pd.posibilitis(k);
-        for(Tupla f:t){
-            System.out.println("Las nuevas posibilidades son: "+f.getElem1()+" : y : "+f.getElem2());
-        
-        }
-        
         
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }

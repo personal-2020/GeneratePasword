@@ -40,8 +40,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     
     @Override
     public List<Tupla> getVisitados(){
-        return posVi;
-        
+        return posVi;       
         }
     
     public String getNumeroFinal() {
@@ -50,14 +49,14 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
 
     @Override
     public void GenerateRandom(Matriz matris) {
-
         ma = matris;
-        System.out.println("la matris es. " + ma);
         int[][] matri = ma.getMartis();
         for (int x = 0; x < matri.length; x++) {
             for (int y = 0; y < matri[x].length; y++) {
                 if (matri[x][y] == -1) {
                     matri[x][y] = getNumRandom();
+                }else if(matri[x][y] != -1){
+                    matri[x][y] = getNumRandom();                
                 }
             }
         }
@@ -67,31 +66,24 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     public String numberOfMatriz() {
         numeroS = "";
         System.out.println("EL numero es: "+numeroS);
-        posVi.clear();
-        //Si no se indica una posicion se toma la del caballo.
+        posVi.clear();//Si no se indica una posicion se toma la del caballo.
         int cont = 0;
-        int a = 0;
-        //Extraemos la matriz de matriz
-        int matris[][] = ma.getMartis();
-        //COn la posicion inicial del caballo tomamos ese numero y agregamos la posicion a las pos ya visitadas.
+        int a = 0; //Extraemos la matriz de matriz
+        int matris[][] = ma.getMartis();//COn la posicion inicial del caballo tomamos ese numero y agregamos la posicion a las pos ya visitadas.
         //Para el caso base tomamos como el primer elemento a ingresar, por ende la lista de visitados esta vacia.
-//        posVi.add(posActual);
+        //posVi.add(posActual);
         //Actualizamos posActual con la primera ocurrencia de la lista de posibilidadess.
-
         for(int g=0;g<20;g++){
             a = 0;
             po = posibilitis(posActual);
-
             if (po.size() > 0) {
                 if (a < po.size()) {
-                    while (a < po.size()) {
-                        posActual = po.get(a);
-
+                    while (a < po.size()) {//posActual = po.get(a);
+                        posActual = po.get((int) (Math.random()*(po.size())));
                         if (esta(posActual)) {
                             a++;
                         } else {
                             posVi.add(posActual);
-                            System.out.println("la posicion actual es: primer elemen: "+posActual.getElem1()+"  , segundo elemento: "+posActual.getElem2());
                             numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
                             a = 0;
                             break;
@@ -99,24 +91,19 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
                     }
                 } else if (a >= po.size()) {
                     posActual = getNewPosition();
-                            System.out.println("la posicion actual es: primer elemen: "+posActual.getElem1()+"  , segundo elemento: "+posActual.getElem2());
                     posVi.add(posActual);
                     numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
                     a = 0;
                 }
             } else if (po.isEmpty() ) {
                 posActual = getNewPosition();
-                System.out.println("la posicion actual es: primer elemen: "+posActual.getElem1()+"  , segundo elemento: "+posActual.getElem2());
                 posVi.add(posActual);
-                numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
-                
+                numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);               
                 a = 0;
             }
 
         }
-
         numero = numeroS;
-        //posVi.clear();
         System.out.println("el numero es: "+numeroS);
         return numeroS;
     }
@@ -141,22 +128,16 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         int tamv = posVi.size();
         Tupla t = new Tupla();
         int qq = 0;
-        //for(Tupla f: posAll){
         while (qq < posAll.size() && seguir) {
-            //System.out.println("VALOR DE  QQQQQq: " + qq);
             Tupla kk = posAll.get(qq);
-
             if (!posVi.contains(kk)) {
                 seguir = false;
-                //System.out.println("QUE ES LO QUE SE PASA 2: " + kk.getElem1() + "Y : " + kk.getElem2());
                 t.setElem1(kk.getElem1());
                 t.setElem2(kk.getElem2());
             }
             qq++;
         }
-        //System.out.println("LAS NUESVAS POSICIONES SON: " + t.getElem1() + "y : " + t.getElem2());
         return t;
-
     }
 
     @Override
@@ -165,21 +146,17 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     }
 
     @Override
-    //private List<Tupla> posibilitis(Tupla position) {
     public List<Tupla> posibilitis(Tupla position) {
         int rowsm = ma.getRows();
         int columm = ma.getColumns();
         List<Tupla> posibilities = new ArrayList<Tupla>();
-
         int posColIni = (int) position.getElem1();
         int posRowsIni = (int) position.getElem2();
         Tupla tu = new Tupla();
         List<Tupla> posb = ho.getMovements();
-        for (Tupla po : posb) {
-            // C y F
+        for (Tupla po : posb) { // C y F
             int columnPosb = (int) po.getElem1();
-            int rowsPosb = (int) po.getElem2();
-            // In here calculate the new position
+            int rowsPosb = (int) po.getElem2();    // In here calculate the new position
             int newPoaitionColumn = posColIni + columnPosb;
             int newPositionRows = posRowsIni + rowsPosb;
             if (newPoaitionColumn < columm && newPositionRows < rowsm && newPoaitionColumn >= 0 && newPositionRows >= 0) {
@@ -189,12 +166,6 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
                 }
             }
         }
-
-        for (Tupla f : posibilities) {
-            //System.out.println("Las nuevas posibilidades son: " + f.getElem1() + " : y : " + f.getElem2());
-
-        }
-
         return posibilities;
     }
 
@@ -202,23 +173,19 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     public String paintMatrs() {
         int[][] matDib = ma.getMartis();
         String resp = "";
-
         for (int x = 0; x < matDib.length; x++) {
-            resp += "FILA :" + x;
+            resp += " - FILA :" + x;
             System.out.println("Fila ; " + x);
             for (int y = 0; y < matDib[x].length; y++) {
-                resp += "cCOLUMNA : " + y;
+                resp += " - COLUMNA : " + y;
                 System.out.println("Columna : " + y);
                 resp += " :  " + matDib[x][y];
                 System.out.println(matDib[x][y]);
             }
         }
         return resp;
-
     }
-
     static {
-
         posAll.add(new Tupla(0, 0));
         posAll.add(new Tupla(0, 1));
         posAll.add(new Tupla(0, 2));
@@ -239,7 +206,5 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         posAll.add(new Tupla(4, 1));
         posAll.add(new Tupla(4, 2));
         posAll.add(new Tupla(4, 3));
-
     }
-
 }
