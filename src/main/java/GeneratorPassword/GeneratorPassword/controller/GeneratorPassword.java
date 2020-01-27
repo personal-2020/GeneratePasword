@@ -31,17 +31,16 @@ public class GeneratorPassword {
     @Autowired
     private GeneratorNumbersServices gn;
     
-    
+    private String numero;
     
     
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
-        
-        
-        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+        numero=pd.getNumero();
+        System.out.println("ESTE ES EL NUEVO NUMERO"+numero);
+        gn.gellAllNum(numero);       
+        return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
-    
-    
     
     
     

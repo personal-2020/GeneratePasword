@@ -19,8 +19,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     public List<Integer> numeros = new ArrayList<Integer>();
     public GeneratorNumbersStub(){}
     
-    
-    public GeneratorNumbersStub(String numero) {
+    @Override
+    public void gellAllNum(String numero) {
         int num = 0;
         int a = 0;
         int b = 5;
@@ -31,7 +31,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             num++;
         }
     }
-
+    @Override
     public List<Integer> getNumeros() {
         return numeros;
     }
@@ -43,7 +43,19 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
 
     @Override
     public String conversNumbers(Integer numero, Integer base) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String respuesta="";
+        int ba=base;
+        int num=numero;
+        while(ba<=16){
+            while(num>=base){
+                respuesta+=String.valueOf(num%base); 
+                num=num /base;
+            }
+            if(num<base){
+                respuesta+=String.valueOf(num);
+            }
+            base*=2;
+        }        
+        return respuesta;
     }
-
 }

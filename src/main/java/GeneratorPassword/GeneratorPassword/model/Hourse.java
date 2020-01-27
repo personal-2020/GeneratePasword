@@ -28,23 +28,21 @@ public class Hourse {
         movements=new ArrayList<Tupla>();
         postInitial=new Tupla(column, rows);
         mov();
-    
     }
     
     public void setPostInitial(Tupla postInitial){
         this.postInitial=postInitial;
     }
-    
-    
+ 
     public Tupla getPosInitial(){
         return postInitial;
     }
+    
     public List<Tupla> getMovements(){
         return movements;
     }
     
-    private void mov(){
-                                // C y F
+    private void mov(){// C y F
         movements.add(new Tupla(1, -2));
         movements.add(new Tupla(2, -1));
         movements.add(new Tupla(1, -2));
@@ -53,10 +51,6 @@ public class Hourse {
         movements.add(new Tupla(-1, 2));
         movements.add(new Tupla(-2, 1));
         movements.add(new Tupla(-2, -1));
-        movements.add(new Tupla(-1, -2));
-               
+        movements.add(new Tupla(-1, -2));          
     }
-    
-    
-    
 }

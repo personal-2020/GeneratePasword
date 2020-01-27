@@ -37,12 +37,12 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         matris = ma.getMartis();
 
     }
-    
+
     @Override
-    public List<Tupla> getVisitados(){
-        return posVi;       
-        }
-    
+    public List<Tupla> getVisitados() {
+        return posVi;
+    }
+
     public String getNumeroFinal() {
         return numero;
     }
@@ -50,13 +50,14 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     @Override
     public void GenerateRandom(Matriz matris) {
         ma = matris;
+        ma.setIniciado(true);
         int[][] matri = ma.getMartis();
         for (int x = 0; x < matri.length; x++) {
             for (int y = 0; y < matri[x].length; y++) {
                 if (matri[x][y] == -1) {
                     matri[x][y] = getNumRandom();
-                }else if(matri[x][y] != -1){
-                    matri[x][y] = getNumRandom();                
+                } else if (matri[x][y] != -1) {
+                    matri[x][y] = getNumRandom();
                 }
             }
         }
@@ -65,46 +66,47 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     @Override
     public String numberOfMatriz() {
         numeroS = "";
-        System.out.println("EL numero es: "+numeroS);
-        posVi.clear();//Si no se indica una posicion se toma la del caballo.
-        int cont = 0;
-        int a = 0; //Extraemos la matriz de matriz
-        int matris[][] = ma.getMartis();//COn la posicion inicial del caballo tomamos ese numero y agregamos la posicion a las pos ya visitadas.
-        //Para el caso base tomamos como el primer elemento a ingresar, por ende la lista de visitados esta vacia.
-        //posVi.add(posActual);
-        //Actualizamos posActual con la primera ocurrencia de la lista de posibilidadess.
-        for(int g=0;g<20;g++){
-            a = 0;
-            po = posibilitis(posActual);
-            if (po.size() > 0) {
-                if (a < po.size()) {
-                    while (a < po.size()) {//posActual = po.get(a);
-                        posActual = po.get((int) (Math.random()*(po.size())));
-                        if (esta(posActual)) {
-                            a++;
-                        } else {
-                            posVi.add(posActual);
-                            numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
-                            a = 0;
-                            break;
+        System.out.println("EL numero es: " + numeroS);
+        if (ma.getIniciado()) {
+            posVi.clear();//Si no se indica una posicion se toma la del caballo.
+            int cont = 0;
+            int a = 0; //Extraemos la matriz de matriz
+            int matris[][] = ma.getMartis();//COn la posicion inicial del caballo tomamos ese numero y agregamos la posicion a las pos ya visitadas.
+            //Para el caso base tomamos como el primer elemento a ingresar, por ende la lista de visitados esta vacia.
+            //posVi.add(posActual);
+            //Actualizamos posActual con la primera ocurrencia de la lista de posibilidadess.
+            for (int g = 0; g < 20; g++) {
+                a = 0;
+                po = posibilitis(posActual);
+                if (po.size() > 0) {
+                    if (a < po.size()) {
+                        while (a < po.size()) {//posActual = po.get(a);
+                            posActual = po.get((int) (Math.random() * (po.size())));
+                            if (esta(posActual)) {
+                                a++;
+                            } else {
+                                posVi.add(posActual);
+                                numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
+                                a = 0;
+                                break;
+                            }
                         }
+                    } else if (a >= po.size()) {
+                        posActual = getNewPosition();
+                        posVi.add(posActual);
+                        numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
+                        a = 0;
                     }
-                } else if (a >= po.size()) {
+                } else if (po.isEmpty()) {
                     posActual = getNewPosition();
                     posVi.add(posActual);
                     numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);
                     a = 0;
                 }
-            } else if (po.isEmpty() ) {
-                posActual = getNewPosition();
-                posVi.add(posActual);
-                numeroS += String.valueOf(matris[(Integer) posActual.getElem2()][(Integer) posActual.getElem1()]);               
-                a = 0;
             }
-
+            numero = numeroS;
         }
-        numero = numeroS;
-        System.out.println("el numero es: "+numeroS);
+        System.out.println("el numero es: " + numeroS);
         return numeroS;
     }
 
@@ -160,13 +162,21 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
             int newPoaitionColumn = posColIni + columnPosb;
             int newPositionRows = posRowsIni + rowsPosb;
             if (newPoaitionColumn < columm && newPositionRows < rowsm && newPoaitionColumn >= 0 && newPositionRows >= 0) {
-                Tupla h=new Tupla(newPoaitionColumn, newPositionRows);
+                Tupla h = new Tupla(newPoaitionColumn, newPositionRows);
                 if (!esta(h)) {
                     posibilities.add(h);
                 }
             }
         }
         return posibilities;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     @Override
@@ -185,6 +195,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         }
         return resp;
     }
+
     static {
         posAll.add(new Tupla(0, 0));
         posAll.add(new Tupla(0, 1));

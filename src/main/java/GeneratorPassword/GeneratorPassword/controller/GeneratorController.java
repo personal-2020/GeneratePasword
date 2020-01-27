@@ -42,14 +42,11 @@ public class GeneratorController {
     Tupla posInit = new Tupla(1, 1);
     Matriz m = new Matriz(4, 5, posInit);
     private String numero;
-    
-    
+      
 
     @RequestMapping(method = RequestMethod.GET, path = "/p1")
-    public ResponseEntity<?> genFirtsMatris() {
-        
-        System.out.println("tamañano matris: columnas " + m.getColumns() + " filas: " + m.getRows());
-        
+    public ResponseEntity<?> genFirtsMatris() {        
+        System.out.println("tamañano matris: columnas " + m.getColumns() + " filas: " + m.getRows());        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
@@ -67,38 +64,39 @@ public class GeneratorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/prueba")
-    public ResponseEntity<?> getprueba() {
-        System.out.println("que es m:"+m.getMartis());
-        pd.GenerateRandom(m);
-        
+    public ResponseEntity<?> getprueba() {        //System.out.println("que es m:"+m.getMartis());
+        pd.GenerateRandom(m);        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
     
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
-    public ResponseEntity<?> getPos() {
-                
+    public ResponseEntity<?> getPos() {                
         return new ResponseEntity<>(pd.getNewPosition(), HttpStatus.ACCEPTED);
     }    
     
     @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
-    public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {
-        
+    public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {        
         return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
     }
-
     //Gnerator of number the 20 cifres
     @RequestMapping(method = RequestMethod.GET, path = "/numero")
-    public ResponseEntity<?> getNumber() {
-        
-        //numero=pd.numberOfMatriz();
-        return new ResponseEntity<>(pd.numberOfMatriz(), HttpStatus.ACCEPTED);
+    public ResponseEntity<?> getNumber() {       
+        numero=pd.numberOfMatriz();
+        if(numero.equals("")){
+            numero="Matriz sin llenar, rellenela antes de solicitar el numero.";
+        }
+        return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }    
     
     @RequestMapping(method = RequestMethod.GET, path = "/vi")
     public ResponseEntity<?> vi() {
-
         return new ResponseEntity<>(pd.getVisitados(), HttpStatus.ACCEPTED);
-    }    
+    }       
     
-    
+    @RequestMapping(method = RequestMethod.GET, path = "/gnum")
+    public ResponseEntity<?> allNUm() {
+        pd.GenerateRandom(m);       
+        numero=pd.numberOfMatriz();        
+        return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
+    }           
 }

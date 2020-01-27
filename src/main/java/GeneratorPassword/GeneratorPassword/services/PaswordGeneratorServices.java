@@ -29,8 +29,7 @@ public interface PaswordGeneratorServices {
     
     public List<Tupla> getVisitados();
     
-    
-    
-    
+    public String getNumero();
+    public void setNumero(String numero);
     
 }

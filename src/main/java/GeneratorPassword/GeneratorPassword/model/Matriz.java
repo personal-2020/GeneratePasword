@@ -19,18 +19,16 @@ public class Matriz {
     private int columns;
     private int elements;
     private Tupla postInitial;
-    private int matris[][]=new int[5][4];
-                                 //C  F
+    private Boolean iniciado;
+    private int matris[][]=new int[5][4]; //C  F
     
     public Matriz() {
-
         for (int a = 0; a < 5; a++) {
-            //
             for (int b = 0; b < 4; b++) {
                 matris[a][b] = -1;
             }
         }
-
+        iniciado=false;
     }
 
     public Matriz(int rows, int columns, Tupla postInitial) {      
@@ -39,6 +37,7 @@ public class Matriz {
         this.rows = rows;
         this.columns = columns;
         this.elements = rows * columns;
+        iniciado=false;
         for (int a = 0; a < rows; a++) {
             for (int b = 0; b < columns; b++) {
                 matris[a][b] = -1;
@@ -53,6 +52,14 @@ public class Matriz {
         }*/
     }
 
+    public Boolean getIniciado() {
+        return iniciado;
+    }
+
+    public void setIniciado(Boolean iniciado) {
+        this.iniciado = iniciado;
+    }
+    
     public Tupla getPostInitial() {
         return postInitial;
     }
@@ -74,9 +81,7 @@ public class Matriz {
     }
      
     public void GenerateRandom() {
-
         int numero = (int) (Math.random() * 10);
-
     }
 
     public Integer getTamC() {
