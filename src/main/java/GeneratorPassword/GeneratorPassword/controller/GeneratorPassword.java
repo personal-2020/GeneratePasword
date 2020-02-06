@@ -7,6 +7,8 @@ package GeneratorPassword.GeneratorPassword.controller;
 
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,8 @@ public class GeneratorPassword {
     
     private String numero;
     
+    private List<Integer> numeros=new ArrayList<Integer>();
+    private List<String> numerosS=new ArrayList<String>();
     
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
@@ -42,6 +46,25 @@ public class GeneratorPassword {
         return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
     
-    
+        @RequestMapping(method = RequestMethod.GET, path = "/change")
+    public ResponseEntity<?> changeBaseNum() {
+        numeros = gn.getNumeros();
+        int base=2;
+        for (int i = 0; i < numeros.size(); i++) {
+            long temp = numeros.get(i);
+            while (base <= 16) {
+                System.out.println("base : " + base);
+                System.out.println("numero : " + temp);
+                temp = gn.conversNumbers(temp, base);
+                base = base * 2;
+            }
+            numerosS.add(Long.toString(temp));
+            base = 2;
+            base = base * 2;
+        }
+
+        return new ResponseEntity<>(numerosS, HttpStatus.ACCEPTED);
+    }
+
     
 }
