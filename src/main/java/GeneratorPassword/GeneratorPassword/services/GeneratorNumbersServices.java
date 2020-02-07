@@ -5,6 +5,7 @@
  */
 package GeneratorPassword.GeneratorPassword.services;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -16,9 +17,9 @@ public interface GeneratorNumbersServices {
     
     
     public List<String> separetaNumbers();
-    public Long conversNumbers(long numero, Integer base);
+    public BigInteger conversNumbers(BigInteger numero, Integer base);
     public void gellAllNum(String numero) ;
-    public List<Integer> getNumeros();
+    public List<BigInteger> getNumeros();
     
     
     
