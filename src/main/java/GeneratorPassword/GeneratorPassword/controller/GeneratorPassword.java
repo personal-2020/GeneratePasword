@@ -41,31 +41,16 @@ public class GeneratorPassword {
     
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
-        numero=pd.getNumero();
-        System.out.println("ESTE ES EL NUEVO NUMERO"+numero);
+        numero=pd.getNumero();//System.out.println("ESTE ES EL NUEVO NUMERO"+numero);
         gn.gellAllNum(numero);       
         return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
     
-        @RequestMapping(method = RequestMethod.GET, path = "/change")
+    @RequestMapping(method = RequestMethod.GET, path = "/change")
     public ResponseEntity<?> changeBaseNum() {
         numeros = gn.getNumeros();
-        int base=2;
-        for (int i = 0; i < numeros.size(); i++) {
-            BigInteger temp = numeros.get(i);
-            while (base <= 16) {
-                System.out.println("base : " + base);
-                System.out.println("numero : " + temp);
-                temp = gn.conversNumbers(temp, base);
-                base = base * 2;
-            }
-            numerosS.add(temp.toString());
-            base = 2;
-            base = base * 2;
-        }
-
+        gn.conversNumb(numeros);
+        numerosS=gn.getNumberConvertido();
         return new ResponseEntity<>(numerosS, HttpStatus.ACCEPTED);
     }
-
-    
 }
