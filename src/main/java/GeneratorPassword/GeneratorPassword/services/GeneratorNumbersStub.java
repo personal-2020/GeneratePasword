@@ -24,8 +24,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     public List<BigInteger> numeros = new ArrayList<BigInteger>();
     public List<String> numerosConvertidos=new ArrayList<String>();
 
-    public GeneratorNumbersStub() {
-    }
+    public GeneratorNumbersStub() {}
 
     @Override
     public void gellAllNum(String numero) {
@@ -48,8 +47,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     public List<String> getNumberConvertido(){
         return numerosConvertidos;
     }
-    
-    
+        
     @Override
     public List<BigInteger> getNumeros() {
         return numeros;
@@ -61,15 +59,11 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     }
 
     public void getNumberBaseCorrect(String[] numero) {
-
-        String[] num = numero;
-
-        //return "";
+        String[] num = numero;//return "";
     }
 
     @Override
     public String conversNumbers(BigInteger numero, Integer base) {
-
         List<String> prueba1 = new ArrayList<>();
         List<String> prueba2 = new ArrayList<>();
         String prueba = "";
@@ -77,12 +71,10 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
         BigInteger cant = BigInteger.ONE;
         BigInteger t = BigInteger.ONE;
         BigInteger resp = BigInteger.ZERO; //System.out.println("como va resp in"+resp);
-
         while (numero.compareTo(BigInteger.valueOf(base)) >= 0) {//System.out.println("Base : "+base);//System.out.println("que numero se va trabajando: "+numero);
             mod = numero.mod(BigInteger.valueOf(base));//System.out.println("que arroja el mod: "+mod);  //System.out.println("que arroja el el div: "+numero.divide(BigInteger.valueOf(base)));
             numero = numero.divide(BigInteger.valueOf(base));
-            t = t.multiply(mod);
-            //System.out.println("que se adiciona : " + t.toString());
+            t = t.multiply(mod); //System.out.println("que se adiciona : " + t.toString());
             prueba1.add(t.toString());
             t = t.multiply(cant);//System.out.println("como va t :"+t);//System.out.println("que es resp antes de sumar  :"+resp);
             resp = resp.add(t);
@@ -100,8 +92,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
         for (int q = 0; q < prueba1.size(); q++) {//System.out.println("que vemos : "+prueba2.get(q));
             String d = prueba2.get(q);
             res = res.concat(d);
-        }
-        //System.out.println("mirar la res lista: " + res); //resp = resp.add(t);
+        }//System.out.println("mirar la res lista: " + res); //resp = resp.add(t);
         return res;
     }
 
