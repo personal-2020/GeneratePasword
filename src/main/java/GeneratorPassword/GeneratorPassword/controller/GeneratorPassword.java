@@ -66,10 +66,10 @@ public class GeneratorPassword {
         //sentenceFinal=op.getSentenceOperateNumerate();
         //return new ResponseEntity<>(sentenceFinal, HttpStatus.ACCEPTED);
         op.clearSentence();
-         op.SeparateNumber(String.valueOf(numerosS.get(0))); 
-         op.SeparateNumber(String.valueOf(numerosS.get(1))); 
-         op.SeparateNumber(String.valueOf(numerosS.get(2))); 
-         op.SeparateNumber(String.valueOf(numerosS.get(3))); 
+         op.SeparateNumber(numerosS.get(0)); 
+         op.SeparateNumber(numerosS.get(1)); 
+         op.SeparateNumber(numerosS.get(2)); 
+         op.SeparateNumber(numerosS.get(3)); 
         List<List<String>> v=op.getListL();
         System.out.println("miremos q final g : "+v);
         return new ResponseEntity<>(v, HttpStatus.ACCEPTED);

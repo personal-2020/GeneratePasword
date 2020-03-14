@@ -115,32 +115,24 @@ public class OperateNumerateStub implements OpeprateNumerate {
     @Override
     //public void SeparateNumber(List<String> frase) {
     public void SeparateNumber(String frase) {
-        List<String>h=new ArrayList<String>();
-//        List<String> temporal = new ArrayList<String>();
-        System.out.println("que frase es: " + frase);
-        String g = "";
-//        for (String frList: frase ) {
+        
+        List<String> temp=new ArrayList<String>();
+        temp.clear();
+        
         for (int i = 0; i < frase.length(); i++) {
-            g = String.valueOf(frase.charAt(i));
-            System.out.println("que arroja: " + g);
-            temporal.add(g);
-            System.out.println("que guarda temporal: " + g);
-            System.out.println("como termina temporal : " + temporal);
-
+            temp.add(String.valueOf(frase.charAt(i)));
+            System.out.println("vemosq tiene temp"+temp);
+            System.out.println(": " + frase.charAt(i));
         }
-        h=temporal;
-        sentencesOfPasword.add(h);
-        System.out.println("como termina el arreglo final 1: " + sentencesOfPasword);
-        temporal.clear();
-        System.out.println("como termina el arreglo final 2: " + sentencesOfPasword);
-//        }
+        sentencesOfPasword.add(temp);
+        System.out.println("vemosq tienef : "+sentencesOfPasword);
     }
 
     public List<List<String>> getListL() {
         return sentencesOfPasword;
     }
-    
-    public void clearSentence(){
+
+    public void clearSentence() {
         sentencesOfPasword.clear();
     }
 }
