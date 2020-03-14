@@ -151,5 +151,10 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             base = base * 2;
         }
     }
-
+    @Override
+    public void resetNumeros(){
+        numeros.clear();
+    }
+    
+    
 }

@@ -47,32 +47,39 @@ public class GeneratorPassword {
     
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
-        numero=pd.getNumero();//System.out.println("ESTE ES EL NUEVO NUMERO"+numero);
-        gn.gellAllNum(numero);       
+        numero=pd.getNumero();
+        if(gn.getNumeros().size()==0){
+            gn.gellAllNum(numero);               
+        }else{
+            gn.resetNumeros();
+            gn.gellAllNum(pd.getNumero());               
+        }
         return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
     
     @RequestMapping(method = RequestMethod.GET, path = "/change")
     public ResponseEntity<?> changeBaseNum() {
         numeros = gn.getNumeros();
-        gn.conversNumb(numeros);
+        if(numerosS.isEmpty()){
+            gn.conversNumb(numeros);        
+        }else{
+            numerosS.clear();
+            gn.conversNumb(numeros);
+        }
         numerosS=gn.getNumberConvertido();
-//        op.SeparateNumber(numerosS);        
         return new ResponseEntity<>(numerosS, HttpStatus.ACCEPTED);
     }
     
     @RequestMapping(method = RequestMethod.GET, path = "/sentencesFinal")
     public ResponseEntity<?> haveManySenteces() {
-        //sentenceFinal=op.getSentenceOperateNumerate();
-        //return new ResponseEntity<>(sentenceFinal, HttpStatus.ACCEPTED);
-        op.clearSentence();
-         op.SeparateNumber(numerosS.get(0)); 
-         op.SeparateNumber(numerosS.get(1)); 
-         op.SeparateNumber(numerosS.get(2)); 
-         op.SeparateNumber(numerosS.get(3)); 
+        op.clearSentences();
+        if(op.getSentence().isEmpty()){
+            op.SeparateNumber(numerosS);
+        }else{
+            op.clearSentence();
+            op.SeparateNumber(numerosS);
+        }
         List<List<String>> v=op.getListL();
-        System.out.println("miremos q final g : "+v);
-        return new ResponseEntity<>(v, HttpStatus.ACCEPTED);
-    }    
-        
+        return new ResponseEntity<>(op.getSentenceOperateNumerate(), HttpStatus.ACCEPTED);
+    }           
 }

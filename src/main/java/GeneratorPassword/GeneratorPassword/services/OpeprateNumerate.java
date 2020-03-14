@@ -17,6 +17,10 @@ public interface OpeprateNumerate {
     public List<String> getSentenceOperateNumerate();
 //    public void SeparateNumber(List<String> frase);
     public void SeparateNumber(String frase);
+    public void SeparateNumber(List<String> frase);
     public List<List<String>> getListL();
+    public void clearSentences();
     public void clearSentence();
+    public List<String> getSentence();
+    
 }

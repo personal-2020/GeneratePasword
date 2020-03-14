@@ -21,6 +21,7 @@ public interface GeneratorNumbersServices {
     public String conversNumbers(BigInteger numero, Integer base);
     public void gellAllNum(String numero) ;
     public List<BigInteger> getNumeros();
+    public void resetNumeros();
     
     
     

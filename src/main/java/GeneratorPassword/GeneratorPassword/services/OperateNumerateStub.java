@@ -25,8 +25,6 @@ public class OperateNumerateStub implements OpeprateNumerate {
     @Override
     public List<String> getSentenceOperateNumerate() {
         int tam = 0;// Your code here!
-        int max = 0;
-        int min = 0;
 
         if (sentencesOfPasword.get(0).size() > tam) {
             tam = sentencesOfPasword.get(0).size();
@@ -112,27 +110,41 @@ public class OperateNumerateStub implements OpeprateNumerate {
         return sentences;
     }
 
-    @Override
-    //public void SeparateNumber(List<String> frase) {
+    @Override    
     public void SeparateNumber(String frase) {
-        
-        List<String> temp=new ArrayList<String>();
+        List<String> temp = new ArrayList<String>();
         temp.clear();
-        
         for (int i = 0; i < frase.length(); i++) {
             temp.add(String.valueOf(frase.charAt(i)));
-            System.out.println("vemosq tiene temp"+temp);
-            System.out.println(": " + frase.charAt(i));
         }
         sentencesOfPasword.add(temp);
-        System.out.println("vemosq tienef : "+sentencesOfPasword);
     }
 
+    @Override
+    public void SeparateNumber(List<String> frase) {
+        for (String gr: frase ) {
+            List<String> temp = new ArrayList<String>();
+            temp.clear();            
+            for (int i = 0; i < gr.length(); i++) {
+                temp.add(String.valueOf(gr.charAt(i)));
+            }
+            sentencesOfPasword.add(temp);            
+        }
+    }
+   @Override
     public List<List<String>> getListL() {
         return sentencesOfPasword;
     }
-
-    public void clearSentence() {
+   @Override
+    public void clearSentences() {
         sentencesOfPasword.clear();
     }
+       @Override
+    public void clearSentence() {
+        sentences.clear();
+    }
+    public List<String> getSentence(){
+        return sentences;
+    }
+    
 }
