@@ -68,7 +68,6 @@ Bienvenido a Generator Password
 ### :wrench: Tecnologías utilizadas
 [![](img/Java-Logo.png)](https://www.java.com/)
 [![](img/html_css_js.png)](https://blog.hubspot.com/marketing/web-design-html-css-javascript)
-[![](img/mavenLogo.jpg)](https://maven.apache.org/)
 [![](img/axios.png)](https://github.com/axios/axios)
 [![](img/Spring-Logo.png)](https://spring.io/)
 [![](img/astahLogo.png)](http://astah.net/)
