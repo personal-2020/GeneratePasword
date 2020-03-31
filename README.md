@@ -5,7 +5,7 @@
 ## Generator Password<br/>
 ## 2019-2<br/>
 ##  Cesar Eduardo Lanos Camacho, estudiante de la Escuela Colombiana de Ingeniería Julio Garavito - Ingeniería de Sistemas 10 semestre
-#### Es una herramienta web de un almacen para administrar los productos  y los clientes que realizan compran en el.
+#### Es una herramienta web para generar contraseñas seguras..
 
 
 ---
@@ -27,14 +27,15 @@ Bienvenido a Generator Password
 
 
 ---:
-
-1. ----
+ 
+1. Ingrese a la app y genere su contraseña. (Construyendo)
     -----
+2.  ---
    
-2. ---
 
     ---
-
+3. Esta aplicacion no almacenara ninguna contraseña. De esta manera no se preocupe por la seguridad de su contraseña.
+4. Para evitar dar una contraseña 2 veces se almaenara el hash de la contraseña y de esta manera solo entregarle una contraseña totalmente nueva. 
 
 
 ---
@@ -47,13 +48,13 @@ Bienvenido a Generator Password
 1. ----
 - ----.
 
-![](img/clIngresando.png)
+![](img/.png)
 
 ---
 
 - ------.
 
-![](img/clenINventario.png)
+![](img/.png)
 
 ---
 
