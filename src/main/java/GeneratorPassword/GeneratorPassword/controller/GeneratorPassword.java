@@ -82,4 +82,21 @@ public class GeneratorPassword {
         List<List<String>> v=op.getListL();
         return new ResponseEntity<>(op.getSentenceOperateNumerate(), HttpStatus.ACCEPTED);
     }           
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/frsCont")
+    public ResponseEntity<?> haveFewSenteces() {
+        List<String> temp=op.getSentence();
+        List<String> g=new ArrayList<String>();
+        if(temp.isEmpty()){
+            System.out.println("NO puede generarse, no hay frases para procesar.");
+        }else{
+            g=op.getFinalFrase(temp);
+            
+        }
+        
+        return new ResponseEntity<>(g, HttpStatus.ACCEPTED);
+    }           
+    
+    
+    
 }

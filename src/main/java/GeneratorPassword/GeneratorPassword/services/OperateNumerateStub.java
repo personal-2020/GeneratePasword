@@ -22,6 +22,12 @@ public class OperateNumerateStub implements OpeprateNumerate {
 
     List<String> temporal = new ArrayList<String>();
 
+    //Se creara 2 array mas, uno con lasfrases de menor de longitud 5 y otro con las frases restantes.
+    private List<String> sentecesGreather = new ArrayList<String>();
+    private List<String> sentecesMinors = new ArrayList<String>();
+    
+    
+    
     @Override
     public List<String> getSentenceOperateNumerate() {
         int tam = 0;// Your code here!
@@ -139,12 +145,81 @@ public class OperateNumerateStub implements OpeprateNumerate {
     public void clearSentences() {
         sentencesOfPasword.clear();
     }
-       @Override
+    @Override
     public void clearSentence() {
         sentences.clear();
     }
+    @Override
     public List<String> getSentence(){
         return sentences;
     }
+    
+    /**
+     * FUncion para generar las frases finales q seran usadas para generar 
+     
+                
+     * @param frase
+     * @return 
+     */
+    @Override
+    public List<String> getFinalFrase(List<String> frase){
+        List<String> answer = new ArrayList<>();
+        //Porcederemos a separar las frases ammayores de las menores
+        
+        
+        for (int i=0;i<frase.size();i++){
+            String h=frase.get(i);
+            if(h.length()<3){
+                sentecesMinors.add(h);            
+            }else{
+                sentecesGreather.add(h);            
+            }            
+        }
+        //Se agregaran las frases pequeñas a las grandes.
+        
+        
+        int sg=0;
+        int sm=0;
+        while(sentecesGreather.size()>0 && sentecesMinors.size()>0){
+            sg=(int) (Math.random() * sentecesGreather.size());
+            sm=(int) (Math.random() * sentecesMinors.size());
+            //Aqui seleccionamos a ambos candidatos y procedemos a agregarlos
+            String sgs=sentecesGreather.get(sg);
+            String sms=sentecesMinors.get(sm);
+            String n=sgs.concat(sms);
+            answer.add(n);
+            sentecesGreather.remove(sg);
+            sentecesMinors.remove(sm);           
+        }
+        //Se revisa que en caso(mas seguro) de quedar frases en "sentecesMinors" se 
+        //genere una nueva apartir de lo que alli allá.
+        String l="";
+        for(int i=0; i<sentecesMinors.size();i++){
+            String q=sentecesMinors.get(i);
+            l=l.concat(q);                  
+        }
+        sentecesMinors.clear();
+        if(l.length()>3){
+            answer.add(l);
+        }else{
+            //BUscaremos la frase mas pequeña y le agegaremos losobrante, en el caso q este sea muy peuqño
+            int y=999;
+            int indice=0;
+            for(int u=0;u<answer.size();u++){
+                String t=answer.get(u);
+                if(t.length()<y){
+                   indice=u;                
+                   y=t.length();
+                }
+            }//Ya habiendo obtenido el indice de la frase mas corta de las frases finales
+            String j=answer.get(indice);
+            j=j.concat(l);
+            answer.set(indice,j);
+            j="";
+        }       
+        l="";                 
+        return answer;
+    }        
+    
     
 }

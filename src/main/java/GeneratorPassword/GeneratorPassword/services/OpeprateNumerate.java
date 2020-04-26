@@ -22,5 +22,6 @@ public interface OpeprateNumerate {
     public void clearSentences();
     public void clearSentence();
     public List<String> getSentence();
+    public List<String> getFinalFrase(List<String> frase);        
     
 }
