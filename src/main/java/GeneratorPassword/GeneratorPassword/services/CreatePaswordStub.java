@@ -5,15 +5,30 @@
  */
 package GeneratorPassword.GeneratorPassword.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author cefar-dico
  */
+@Service
 public class CreatePaswordStub implements CreatePaswword{
 
     
+    private List<String> arregloAyuda = new ArrayList<String>();
+    
+    private List<String> arregloFinal =  new ArrayList<String>();
+    
+    @Override
+    public List<String> getArregloAyuda(){
+        return arregloAyuda;
+    }
+    @Override
+    public List<String> getArregloFinal(){
+        return arregloFinal;
+    }   
     /**
      * Funcion que genera las contraseñas:
      * 
@@ -30,8 +45,37 @@ public class CreatePaswordStub implements CreatePaswword{
      * @return 
      */
     @Override
-    public String paswords(List<String> frase) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> paswords(List<String> frase) {
+        
+        //Analizando si se debe agergar al vector ayuda....
+        for(int i =0; i<frase.size();i++){
+            int nn=0;
+            int nl=0;
+            String g=frase.get(i);
+             for(int y=0;y<g.length();y++){
+                if(isNumeric(String.valueOf(g.charAt(y)))){
+                    nn++;
+                }else{
+                    nl++;
+                }                
+            }
+            if( nn-nl>2){
+                arregloAyuda.add(g);
+                //frase.remove(i);
+            }else{
+                arregloFinal.add(g);
+            }                         
+        }                             
+        return arregloFinal;       
     }
-    
+        
+    private static boolean isNumeric(String cadena){
+	try {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+    }
+
 }

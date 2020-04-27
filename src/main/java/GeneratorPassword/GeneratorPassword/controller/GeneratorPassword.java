@@ -5,6 +5,7 @@
  */
 package GeneratorPassword.GeneratorPassword.controller;
 
+import GeneratorPassword.GeneratorPassword.services.CreatePaswword;
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.OpeprateNumerate;
 import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
@@ -37,6 +38,9 @@ public class GeneratorPassword {
     
     @Autowired
     private OpeprateNumerate op;
+        
+    @Autowired
+    private CreatePaswword crp;
     
     private String numero;
     
@@ -44,6 +48,10 @@ public class GeneratorPassword {
     private List<String> numerosS=new ArrayList<String>();
     
     private List<String> sentenceFinal=new ArrayList<String>();
+    
+    private List<String> arregloPreFinal=new ArrayList<String>();
+    private List<String> arregloFinal=new ArrayList<String>();
+    private List<String> arregloAyuda=new ArrayList<String>();
     
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
@@ -86,17 +94,23 @@ public class GeneratorPassword {
     @RequestMapping(method = RequestMethod.GET, path = "/frsCont")
     public ResponseEntity<?> haveFewSenteces() {
         List<String> temp=op.getSentence();
-        List<String> g=new ArrayList<String>();
+        
         if(temp.isEmpty()){
             System.out.println("NO puede generarse, no hay frases para procesar.");
         }else{
-            g=op.getFinalFrase(temp);
+            arregloPreFinal=op.getFinalFrase(temp);
             
         }
         
-        return new ResponseEntity<>(g, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(arregloPreFinal, HttpStatus.ACCEPTED);
     }           
     
-    
+    @RequestMapping(method = RequestMethod.GET, path = "/final")
+    public ResponseEntity<?> havefinal() {
+        List<String> temp=crp.paswords(arregloPreFinal);
+        System.out.println("El arreglo de ayuda es: "+crp.getArregloAyuda());
+        
+        return new ResponseEntity<>(crp.paswords(arregloPreFinal), HttpStatus.ACCEPTED);
+    }           
     
 }

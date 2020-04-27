@@ -5,10 +5,13 @@
  */
 package GeneratorPassword.GeneratorPassword.persistence.impl;
 
+import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -26,6 +29,17 @@ public class Diccionario {
 
     public Diccionario() {
 
+    }
+
+    public Map<String, List<Tupla>> getMap(){
+        return map;
+    }
+    public List<Tupla> getListOfLetter(String letra) throws PasswordException{               
+        if(map.containsKey(letra)){                        
+             return map.get(letra);       
+        }else{            
+            throw  new PasswordException("NO se encuentra esa letra");                    
+        }
     }
 
     static {

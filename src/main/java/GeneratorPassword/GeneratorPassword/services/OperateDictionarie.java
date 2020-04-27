@@ -11,10 +11,10 @@ import java.util.List;
  *
  * @author cefar-dico
  */
-public interface CreatePaswword {
+public interface OperateDictionarie {
     
-    public List<String> paswords(List<String> frase);
-    public List<String> getArregloAyuda();
-    public List<String> getArregloFinal();
     
+    
+    public List<String> getPaswword(List<String> arregloFinal);
+    public void getListHelp(List<String> arregloAyuda);
 }

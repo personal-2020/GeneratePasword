@@ -164,9 +164,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
     @Override
     public List<String> getFinalFrase(List<String> frase){
         List<String> answer = new ArrayList<>();
-        //Porcederemos a separar las frases ammayores de las menores
-        
-        
+        //Porcederemos a separar las frases ammayores de las menores        
         for (int i=0;i<frase.size();i++){
             String h=frase.get(i);
             if(h.length()<3){
@@ -175,9 +173,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
                 sentecesGreather.add(h);            
             }            
         }
-        //Se agregaran las frases pequeñas a las grandes.
-        
-        
+        //Se agregaran las frases pequeñas a las grandes.                
         int sg=0;
         int sm=0;
         while(sentecesGreather.size()>0 && sentecesMinors.size()>0){
@@ -219,7 +215,6 @@ public class OperateNumerateStub implements OpeprateNumerate {
         }       
         l="";                 
         return answer;
-    }        
-    
-    
+    }            
 }
+ 
