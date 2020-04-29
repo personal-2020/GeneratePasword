@@ -8,6 +8,7 @@ package GeneratorPassword.GeneratorPassword.persistence.impl;
 import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -35,13 +36,60 @@ public class Diccionario {
         return map;
     }
     public List<Tupla> getListOfLetter(String letra) throws PasswordException{               
+        
         if(map.containsKey(letra)){                        
              return map.get(letra);       
         }else{            
             throw  new PasswordException("NO se encuentra esa letra");                    
         }
     }
-
+    
+    public String getLetra(String Letra) throws PasswordException{        
+        List<Tupla> palabras=getListOfLetter(Letra);
+        int numero= (int) (Math.random() * palabras.size());
+        Tupla t=palabras.get(numero);
+        t.setElem2((int)t.getElem2()+100);
+        palabras.set(numero,t);
+        rechangeinMap(Letra, palabras);
+        return (String)t.getElem1();
+    }
+    
+    public String getNUmero(){
+        return String.valueOf((int) (Math.random() * 10));
+    }
+    
+    
+    public void downLevel(String Letra){        
+        Map<String, List<Tupla>> temp= new HashMap<String, List<Tupla>>();
+        Iterator it = map.keySet().iterator();        
+        while(it.hasNext()){            
+            String key = (String)it.next();
+            System.out.println("Clave: " + key + " -> Valor: " + map.get(key));
+            List<Tupla> te=map.get(key);
+            for(int i=0;i<te.size();i++){
+              Tupla ll=te.get(i);
+              if((int)ll.getElem2()>0){
+                  ll.setElem2((int)ll.getElem2()-10);
+                  te.set(i, ll);
+              }
+            }          
+            temp.put(key, te);          
+        }
+        setMap(temp);        
+    }    
+    public void setMap(Map<String, List<Tupla>> map){
+        this.map=map;        
+    }
+        
+    public void rechangeinMap(String letra, List<Tupla> tupla) throws PasswordException{        
+        if(map.containsKey(letra)){                                                
+            map.remove(letra);       
+            map.put(letra, tupla);             
+        }else{            
+            throw  new PasswordException("NO se encuentra esa letra");                    
+        }                          
+    }
+    
     static {
         map = new HashMap<String, List<Tupla>>();
         arrA = new ArrayList<Tupla>();

@@ -16,5 +16,16 @@ public interface OperateDictionarie {
     
     
     public List<String> getPaswword(List<String> arregloFinal);
+    
     public void getListHelp(List<String> arregloAyuda);
+    
+    public List<List<String>> conversFraseToArray(List<String> arregloIn);
+    
+    public void setArregloAyuda(List<String> arregloAyudav);
+    
+    public List<String> getArregloAyuda();
+    
+    
+    
+    
 }

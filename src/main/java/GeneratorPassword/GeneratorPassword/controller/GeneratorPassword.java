@@ -108,9 +108,9 @@ public class GeneratorPassword {
     @RequestMapping(method = RequestMethod.GET, path = "/final")
     public ResponseEntity<?> havefinal() {
         List<String> temp=crp.paswords(arregloPreFinal);
-        System.out.println("El arreglo de ayuda es: "+crp.getArregloAyuda());
+        //System.out.println("El arreglo de ayuda es: "+crp.getArregloAyuda());
         
-        return new ResponseEntity<>(crp.paswords(arregloPreFinal), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
     }           
     
 }

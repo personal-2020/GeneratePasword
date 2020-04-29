@@ -8,6 +8,7 @@ package GeneratorPassword.GeneratorPassword.controller;
 import GeneratorPassword.GeneratorPassword.services.CreatePaswword;
 import GeneratorPassword.GeneratorPassword.services.OperateDictionarie;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,13 +37,18 @@ public class FinishPassword {
     public ResponseEntity<?> getPassword() {
         
         String contraseña;        
-        if(contraseñas.isEmpty()){
-            od.getListHelp(crp.getArregloAyuda());
-            contraseñas=(ArrayList<String>) od.getPaswword(crp.getArregloFinal());
-            contraseña=contraseñas.get(0);
         
+        List<String> as=crp.getArregloAyuda();
+        
+        od.getListHelp(as);
+        if(contraseñas.isEmpty()){ 
+            contraseñas=(ArrayList<String>) od.getPaswword(crp.getArregloFinal());
+            System.out.println("lista de contraseñas : "+contraseñas.toString());
+            contraseña=contraseñas.get(0);        
+            contraseñas.remove(0);
         }else{
             contraseña=contraseñas.get(0);        
+            contraseñas.remove(0);
         }       
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }        

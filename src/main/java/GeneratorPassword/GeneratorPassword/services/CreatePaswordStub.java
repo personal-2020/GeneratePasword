@@ -59,10 +59,10 @@ public class CreatePaswordStub implements CreatePaswword{
                     nl++;
                 }                
             }
-            if( nn-nl>2){
+            if( nn-nl>=2){
                 arregloAyuda.add(g);
                 //frase.remove(i);
-            }else{
+            }else if(nn-nl<2){
                 arregloFinal.add(g);
             }                         
         }                             
