@@ -62,8 +62,10 @@ public class OperateDictionarieStub implements OperateDictionarie {
             boolean paso = false;
             int si = 0;
             int p = 0;
+            
+            int pp=0;
            while (temp.size() > 0) {
-                if (p > temp.size()) {
+                if (p >= temp.size()) {
                     p = 0;
                     si++;
                 }
@@ -91,7 +93,8 @@ public class OperateDictionarieStub implements OperateDictionarie {
 
                         }
                     }
-                    if(!noesta){
+                    if(!noesta|| pp>=2){
+                        pp=0;
                         if(letra.equals("L")){
                             int k=(int) (Math.random() * letraEmergencia.size());
                             String h=letraEmergencia.get(k);
@@ -129,16 +132,14 @@ public class OperateDictionarieStub implements OperateDictionarie {
                     } else {
                         paso = false;
                         p++;
+                        pp++;
                     }
-
                 }else if(p>temp.size()){
                     p=0;
-                
-                
                 }else{
                     p++;
+                    pp++;
                 }
-
             }
             contraseñas.add(contraseña);
         }
