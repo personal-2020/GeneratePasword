@@ -23,9 +23,17 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
 
     public List<BigInteger> numeros = new ArrayList<BigInteger>();
     public List<String> numerosConvertidos=new ArrayList<String>();
-
+    
+    /**
+     * 
+     * 
+     */
     public GeneratorNumbersStub() {}
 
+    /**
+     * 
+     * @param numero 
+     */
     @Override
     public void gellAllNum(String numero) {
         int num = 0;
@@ -39,29 +47,55 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
         }
     }
 
+    /**
+     * 
+     * @param numerosConvertidos 
+     */
     public void setNumverCovertido(List<String> numerosConvertidos){
         this.numerosConvertidos=numerosConvertidos;    
     }
     
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<String> getNumberConvertido(){
         return numerosConvertidos;
     }
-        
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<BigInteger> getNumeros() {
         return numeros;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<String> separetaNumbers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    /**
+     * 
+     * @param numero 
+     */
     public void getNumberBaseCorrect(String[] numero) {
         String[] num = numero;//return "";
     }
-
+    
+    /**
+     * 
+     * @param numero
+     * @param base
+     * @return 
+     */
     @Override
     public String conversNumbers(BigInteger numero, Integer base) {
         List<String> prueba1 = new ArrayList<>();
@@ -80,8 +114,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             resp = resp.add(t);
             t = BigInteger.ONE;
             cant = cant.multiply(BigInteger.valueOf(10));  //System.out.println("va quedando : "+resp);
-        }
-        
+        }        
         t = BigInteger.ONE;//System.out.println("que es cant : "+cant);
         prueba1.add(numero.toString());
         Collections.reverse(prueba1);
@@ -95,10 +128,14 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
         }//System.out.println("mirar la res lista: " + res); //resp = resp.add(t);
         return res;
     }
-
+    
+    /**
+     * 
+     * @param numero
+     * @return 
+     */
     public List<String> getNumInCorrectBase(List<String> numero) {
         List<String> respuesta = new ArrayList<String>();
-
         for (int i = 0; i < numero.size(); i++) {
             Integer temporal= Integer.valueOf(numero.get(i));
             switch (temporal) {
@@ -123,10 +160,14 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
                 default:
                     respuesta.add(numero.get(i));
             }
-        }   //System.out.println("que regresa: " + respuesta);
+        }//System.out.println("que regresa: " + respuesta);
         return respuesta;        
     }
 
+    /**
+     * 
+     * @param numero 
+     */
     @Override
     public void conversNumb(List<BigInteger> numero) {
         int base=2;
@@ -151,10 +192,13 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             base = base * 2;
         }
     }
+    
+    /**
+     * 
+     */
     @Override
     public void resetNumeros(){
         numeros.clear();
     }
-    
-    
+        
 }

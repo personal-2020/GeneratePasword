@@ -32,14 +32,14 @@ public class FinishPassword {
     
     private ArrayList<String> contraseñas=new ArrayList<String>();
     
-    
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/gt")
-    public ResponseEntity<?> getPassword() {
-        
-        String contraseña;        
-        
-        List<String> as=crp.getArregloAyuda();
-        
+    public ResponseEntity<?> getPassword() {        
+        String contraseña;                
+        List<String> as=crp.getArregloAyuda();        
         od.getListHelp(as);
         if(contraseñas.isEmpty()){ 
             contraseñas=(ArrayList<String>) od.getPaswword(crp.getArregloFinal());
@@ -53,8 +53,4 @@ public class FinishPassword {
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }        
 
-    
-    
-    
 }
-

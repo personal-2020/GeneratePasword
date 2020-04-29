@@ -28,13 +28,27 @@ public class Diccionario {
     private static List<Tupla> arrE;
     private static List<Tupla> arrF;
 
+    /**
+     * 
+     */
     public Diccionario() {
 
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Map<String, List<Tupla>> getMap(){
         return map;
     }
+    
+    /**
+     * 
+     * @param letra
+     * @return
+     * @throws PasswordException 
+     */
     public List<Tupla> getListOfLetter(String letra) throws PasswordException{               
         
         if(map.containsKey(letra)){                        
@@ -44,6 +58,12 @@ public class Diccionario {
         }
     }
     
+    /**
+     * 
+     * @param Letra
+     * @return
+     * @throws PasswordException 
+     */
     public String getLetra(String Letra) throws PasswordException{        
         List<Tupla> palabras=getListOfLetter(Letra);
         int numero= (int) (Math.random() * palabras.size());
@@ -54,11 +74,18 @@ public class Diccionario {
         return (String)t.getElem1();
     }
     
+    /**
+     * 
+     * @return 
+     */    
     public String getNUmero(){
         return String.valueOf((int) (Math.random() * 10));
     }
     
-    
+    /**
+     * 
+     * @param Letra 
+     */
     public void downLevel(String Letra){        
         Map<String, List<Tupla>> temp= new HashMap<String, List<Tupla>>();
         Iterator it = map.keySet().iterator();        
@@ -76,11 +103,22 @@ public class Diccionario {
             temp.put(key, te);          
         }
         setMap(temp);        
-    }    
+    }  
+    
+    /**
+     * 
+     * @param map 
+     */
     public void setMap(Map<String, List<Tupla>> map){
         this.map=map;        
     }
-        
+    
+    /**
+     * 
+     * @param letra
+     * @param tupla
+     * @throws PasswordException 
+     */
     public void rechangeinMap(String letra, List<Tupla> tupla) throws PasswordException{        
         if(map.containsKey(letra)){                                                
             map.remove(letra);       

@@ -53,6 +53,10 @@ public class GeneratorPassword {
     private List<String> arregloFinal=new ArrayList<String>();
     private List<String> arregloAyuda=new ArrayList<String>();
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
         numero=pd.getNumero();
@@ -64,6 +68,12 @@ public class GeneratorPassword {
         }
         return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
+    
+    
+    /**
+     * 
+     * @return 
+     */
     
     @RequestMapping(method = RequestMethod.GET, path = "/change")
     public ResponseEntity<?> changeBaseNum() {
@@ -78,6 +88,10 @@ public class GeneratorPassword {
         return new ResponseEntity<>(numerosS, HttpStatus.ACCEPTED);
     }
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/sentencesFinal")
     public ResponseEntity<?> haveManySenteces() {
         op.clearSentences();
@@ -91,6 +105,10 @@ public class GeneratorPassword {
         return new ResponseEntity<>(op.getSentenceOperateNumerate(), HttpStatus.ACCEPTED);
     }           
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/frsCont")
     public ResponseEntity<?> haveFewSenteces() {
         List<String> temp=op.getSentence();
@@ -105,6 +123,10 @@ public class GeneratorPassword {
         return new ResponseEntity<>(arregloPreFinal, HttpStatus.ACCEPTED);
     }           
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/final")
     public ResponseEntity<?> havefinal() {
         List<String> temp=crp.paswords(arregloPreFinal);

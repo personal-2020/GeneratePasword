@@ -30,6 +30,10 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
     List<Tupla> po;
     int matris[][] = new int[5][4];
 
+
+    /**
+     * 
+     */
     public PasswordGeneratorStub() {
         ho = new Hourse();
         ma = new Matriz();
@@ -37,16 +41,27 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         matris = ma.getMartis();
 
     }
-
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<Tupla> getVisitados() {
         return posVi;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public String getNumeroFinal() {
         return numero;
     }
 
+    /**
+     * 
+     * @param matris 
+     */
     @Override
     public void GenerateRandom(Matriz matris) {
         ma = matris;
@@ -63,6 +78,10 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String numberOfMatriz() {
         numeroS = "";
@@ -110,6 +129,10 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         return numeroS;
     }
 
+    /**
+     * 
+     * 
+    */
     @Override
     public Boolean esta(Tupla pos) {
         Boolean es = false;
@@ -123,6 +146,10 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         return es;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public Tupla getNewPosition() {
         boolean seguir = true;
@@ -142,11 +169,20 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         return t;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public Integer getNumRandom() {
         return (int) (Math.random() * 10);
     }
 
+    /**
+     * 
+     * @param position
+     * @return 
+     */
     @Override
     public List<Tupla> posibilitis(Tupla position) {
         int rowsm = ma.getRows();
@@ -171,14 +207,26 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
         return posibilities;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNumero() {
         return numero;
     }
 
+    /**
+     * 
+     * @param numero 
+     */
     public void setNumero(String numero) {
         this.numero = numero;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String paintMatrs() {
         int[][] matDib = ma.getMartis();

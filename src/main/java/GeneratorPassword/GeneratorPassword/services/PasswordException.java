@@ -11,10 +11,19 @@ package GeneratorPassword.GeneratorPassword.services;
  */
 public class PasswordException extends Exception{
     
+    /**
+     * 
+     * @param message
+     * @param cause 
+     */
     public PasswordException(String message, Throwable cause) {
         super(message, cause);
     }
     
+    /**
+     * 
+     * @param message 
+     */
     public PasswordException(String message){
         super(message);
     }

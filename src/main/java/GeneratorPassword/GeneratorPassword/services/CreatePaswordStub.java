@@ -21,14 +21,24 @@ public class CreatePaswordStub implements CreatePaswword{
     
     private List<String> arregloFinal =  new ArrayList<String>();
     
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<String> getArregloAyuda(){
         return arregloAyuda;
     }
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<String> getArregloFinal(){
         return arregloFinal;
     }   
+    
     /**
      * Funcion que genera las contraseñas:
      * 
@@ -45,9 +55,7 @@ public class CreatePaswordStub implements CreatePaswword{
      * @return 
      */
     @Override
-    public List<String> paswords(List<String> frase) {
-        
-        //Analizando si se debe agergar al vector ayuda....
+    public List<String> paswords(List<String> frase) {//Analizando si se debe agergar al vector ayuda....
         for(int i =0; i<frase.size();i++){
             int nn=0;
             int nl=0;
@@ -60,15 +68,19 @@ public class CreatePaswordStub implements CreatePaswword{
                 }                
             }
             if( nn-nl>=2){
-                arregloAyuda.add(g);
-                //frase.remove(i);
+                arregloAyuda.add(g);//frase.remove(i);
             }else if(nn-nl<2){
                 arregloFinal.add(g);
             }                         
         }                             
         return arregloFinal;       
     }
-        
+    
+    /**
+     * 
+     * @param cadena
+     * @return 
+     */
     private static boolean isNumeric(String cadena){
 	try {
 		Integer.parseInt(cadena);
@@ -77,5 +89,4 @@ public class CreatePaswordStub implements CreatePaswword{
 		return false;
 	}
     }
-
 }

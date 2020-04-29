@@ -12,9 +12,7 @@ import java.util.List;
  * @author cefar-dico
  */
 public interface OperateDictionarie {
-    
-    
-    
+            
     public List<String> getPaswword(List<String> arregloFinal);
     
     public void getListHelp(List<String> arregloAyuda);
@@ -24,8 +22,5 @@ public interface OperateDictionarie {
     public void setArregloAyuda(List<String> arregloAyudav);
     
     public List<String> getArregloAyuda();
-    
-    
-    
     
 }

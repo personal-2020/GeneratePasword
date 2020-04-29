@@ -27,10 +27,18 @@ public class OperateDictionarieStub implements OperateDictionarie {
 
     private List<String> arregloAyuda = new ArrayList<String>();
 
+    /**
+     * 
+     * @param arregloAyudav 
+     */
     public void setArregloAyuda(List<String> arregloAyudav) {
         this.arregloAyuda = arregloAyuda;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public List<String> getArregloAyuda() {
         return arregloAyuda;
     }
@@ -52,17 +60,13 @@ public class OperateDictionarieStub implements OperateDictionarie {
     @Override
     public List<String> getPaswword(List<String> arregloFinal) {
         List<List<String>> arreglosf = conversFraseToArray(arregloFinal);
-
         String letra = "L";
-
-        //for (List<String> ft : arreglosf) {
         for(int ft=0;ft<arreglosf.size();ft++){
             String contraseña = "";
             List<String> temp = arreglosf.get(ft);
             boolean paso = false;
             int si = 0;
-            int p = 0;
-            
+            int p = 0;            
             int pp=0;
            while (temp.size() > 0) {
                 if (p >= temp.size()) {
@@ -85,12 +89,10 @@ public class OperateDictionarieStub implements OperateDictionarie {
                                 Logger.getLogger(OperateDictionarieStub.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         } else if (isNumeric(qqq) && letra.equals("N") && noesta) {
-
                                 arregloAyuda.remove(g);
                                 letra="L";
                                 contraseña = contraseña.concat(qqq);
                                 noesta = false;
-
                         }
                     }
                     if(!noesta|| pp>=2){
@@ -123,8 +125,7 @@ public class OperateDictionarieStub implements OperateDictionarie {
                     } else if (isNumeric(temp.get(p)) & letra.equals("N")) {
                         letra = "L";                        
                         contraseña = contraseña.concat(temp.get(p));                        
-                        temp.remove(p);
-                        
+                        temp.remove(p);                        
                         if(p>0){
                             p--;
                         }
@@ -146,18 +147,26 @@ public class OperateDictionarieStub implements OperateDictionarie {
         return contraseñas;
     }
 
+    /**
+     * 
+     * @param arregloA 
+     */
+    
     @Override
     public void getListHelp(List<String> arregloA) {
-        //for(String ft: arregloAyuda){            
         for (int ae = 0; ae < arregloA.size(); ae++) {
             String ft = arregloA.get(ae);
             for (int y = 0; y < ft.length(); y++) {
                 arregloAyuda.add(String.valueOf(ft.charAt(y)));
-
             }
         }
     }
-
+    
+    /**
+     * 
+     * @param arregloIn
+     * @return 
+     */
     @Override
     public List<List<String>> conversFraseToArray(List<String> arregloIn) {
         List<List<String>> arregloOut = new ArrayList<List<String>>();
@@ -170,7 +179,12 @@ public class OperateDictionarieStub implements OperateDictionarie {
         }
         return arregloOut;
     }
-
+    
+    /**
+     * 
+     * @param cadena
+     * @return 
+     */
     private static boolean isNumeric(String cadena) {
         try {
             Integer.parseInt(cadena);
@@ -179,15 +193,14 @@ public class OperateDictionarieStub implements OperateDictionarie {
             return false;
         }
     }
-    static{
-    
+    static{  
+        
         letraEmergencia.add("A");
         letraEmergencia.add("B");
         letraEmergencia.add("C");
         letraEmergencia.add("D");
         letraEmergencia.add("E");
-        letraEmergencia.add("F");
-    
-    
+        letraEmergencia.add("F");       
+        
     }
 }

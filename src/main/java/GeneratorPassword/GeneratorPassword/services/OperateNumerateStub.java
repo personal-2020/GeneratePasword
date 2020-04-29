@@ -21,22 +21,21 @@ public class OperateNumerateStub implements OpeprateNumerate {
     private List<List<String>> sentencesOfPasword = new ArrayList<List<String>>();
 
     List<String> temporal = new ArrayList<String>();
-
     //Se creara 2 array mas, uno con lasfrases de menor de longitud 5 y otro con las frases restantes.
     private List<String> sentecesGreather = new ArrayList<String>();
     private List<String> sentecesMinors = new ArrayList<String>();
     
-    
-    
+    /**
+     * 
+     * @return 
+     */    
     @Override
     public List<String> getSentenceOperateNumerate() {
         int tam = 0;// Your code here!
-
         if (sentencesOfPasword.get(0).size() > tam) {
             tam = sentencesOfPasword.get(0).size();
         }
         if (sentencesOfPasword.get(1).size() > tam) {
-
             tam = sentencesOfPasword.get(1).size();
         }
         if (sentencesOfPasword.get(2).size() > tam) {
@@ -45,9 +44,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
         if (sentencesOfPasword.get(3).size() > tam) {
             tam = sentencesOfPasword.get(3).size();
         }
-
         for (int i = 0; i < tam; i++) {
-
             if (i < sentencesOfPasword.get(0).size()) {
                 if (sentences.isEmpty()) {
                     sentences.add(sentencesOfPasword.get(0).get(i));
@@ -116,6 +113,10 @@ public class OperateNumerateStub implements OpeprateNumerate {
         return sentences;
     }
 
+    /**
+     * 
+     * @param frase 
+     */
     @Override    
     public void SeparateNumber(String frase) {
         List<String> temp = new ArrayList<String>();
@@ -126,6 +127,10 @@ public class OperateNumerateStub implements OpeprateNumerate {
         sentencesOfPasword.add(temp);
     }
 
+    /**
+     * 
+     * @param frase 
+     */
     @Override
     public void SeparateNumber(List<String> frase) {
         for (String gr: frase ) {
@@ -137,27 +142,43 @@ public class OperateNumerateStub implements OpeprateNumerate {
             sentencesOfPasword.add(temp);            
         }
     }
-   @Override
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
     public List<List<String>> getListL() {
         return sentencesOfPasword;
     }
-   @Override
+    
+    /**+
+     * 
+     */
+    @Override
     public void clearSentences() {
         sentencesOfPasword.clear();
     }
+    
+    /**
+     * 
+     */
     @Override
     public void clearSentence() {
         sentences.clear();
     }
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<String> getSentence(){
         return sentences;
     }
     
     /**
-     * FUncion para generar las frases finales q seran usadas para generar 
-     
-                
+     * FUncion para generar las frases finales q seran usadas para generar                     
      * @param frase
      * @return 
      */
@@ -172,23 +193,19 @@ public class OperateNumerateStub implements OpeprateNumerate {
             }else{
                 sentecesGreather.add(h);            
             }            
-        }
-        //Se agregaran las frases pequeñas a las grandes.                
+        }//Se agregaran las frases pequeñas a las grandes.                
         int sg=0;
         int sm=0;
         while(sentecesGreather.size()>0 && sentecesMinors.size()>0){
             sg=(int) (Math.random() * sentecesGreather.size());
-            sm=(int) (Math.random() * sentecesMinors.size());
-            //Aqui seleccionamos a ambos candidatos y procedemos a agregarlos
+            sm=(int) (Math.random() * sentecesMinors.size());//Aqui seleccionamos a ambos candidatos y procedemos a agregarlos
             String sgs=sentecesGreather.get(sg);
             String sms=sentecesMinors.get(sm);
             String n=sgs.concat(sms);
             answer.add(n);
             sentecesGreather.remove(sg);
-            sentecesMinors.remove(sm);           
-        }
-        //Se revisa que en caso(mas seguro) de quedar frases en "sentecesMinors" se 
-        //genere una nueva apartir de lo que alli allá.
+            sentecesMinors.remove(sm);//Se revisa que en caso(mas seguro) de quedar frases en "sentecesMinors" se            
+        }//genere una nueva apartir de lo que alli allá.
         String l="";
         for(int i=0; i<sentecesMinors.size();i++){
             String q=sentecesMinors.get(i);
@@ -197,8 +214,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
         sentecesMinors.clear();
         if(l.length()>3){
             answer.add(l);
-        }else{
-            //BUscaremos la frase mas pequeña y le agegaremos losobrante, en el caso q este sea muy peuqño
+        }else{//BUscaremos la frase mas pequeña y le agegaremos losobrante, en el caso q este sea muy peuqño
             int y=999;
             int indice=0;
             for(int u=0;u<answer.size();u++){

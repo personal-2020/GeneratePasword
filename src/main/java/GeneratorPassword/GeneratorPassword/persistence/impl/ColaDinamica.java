@@ -18,6 +18,9 @@ public class ColaDinamica<T> {
     private Nodo<T> ultimo;
     private int tamanio;
  
+    /**
+     * 
+     */
     public ColaDinamica() {
         primero = null;
         anterior=null;
@@ -58,16 +61,13 @@ public class ColaDinamica<T> {
      * Elimina y devuelve el primer elemento de la cola
      * @return 
      */
-    public T dequeue() {
- 
+    public T dequeue() { 
         if (isEmpty()) {
             return null;
-        }
- 
+        } 
         T elemento = primero.getElemento();
         Nodo<T> aux = primero.getSiguiente();
-        primero = null;
- 
+        primero = null; 
         primero = aux;
         tamanio--;
         if (isEmpty()) {
@@ -77,38 +77,31 @@ public class ColaDinamica<T> {
         return elemento;
     }
 
-    public T def(){
-    
+    /**
+     * 
+     * @return 
+     */
+    public T def(){    
         if (isEmpty()) {
             return null;
-        }
-        
+        }        
         T elemento = ultimo.getElemento();
         ultimo.setAnterior(ultimo.getAnterior());
         Nodo<T> aux = ultimo.getSiguiente();        
         ultimo=aux;
         if(isEmpty()){
             primero=null;
-        }   
-    
-        return elemento;
-    
+        }       
+        return elemento;    
     }
 
-
-
-
-    
-    
     /**
      * Añade un nuevo elemento a la cola
      * @param elemento
      * @return 
      */
-    public T enqueue(T elemento) {
- 
-        Nodo<T> aux = new Nodo(elemento, null, null);
- 
+    public T enqueue(T elemento) { 
+        Nodo<T> aux = new Nodo(elemento, null, null); 
         if (isEmpty()) {
             primero = aux;
             anterior=aux;
@@ -116,18 +109,15 @@ public class ColaDinamica<T> {
         } else {
             if (size() == 1) {
                 anterior.setAnterior(aux);
-                primero.setSiguiente(aux);
-                
+                primero.setSiguiente(aux);                
             } else {                
                 ultimo.setSiguiente(aux);
                 anterior.setAnterior(ultimo);
             }
             ultimo = aux;
-        }
- 
+        } 
         tamanio++;
-        return aux.getElemento();
- 
+        return aux.getElemento(); 
     }
  
     /**
@@ -135,23 +125,17 @@ public class ColaDinamica<T> {
      * @return 
      */
     public String toString() {
- 
         if (isEmpty()) {
             return "La lista esta vacia";
         } else {
- 
             String cadena = "";
- 
             Nodo<T> aux = primero;
             while (aux != null) {
                 cadena += aux;
                 aux = aux.getSiguiente();
-            }
- 
+            } 
             return cadena;
- 
         }
- 
     }      
     
 }

@@ -43,42 +43,70 @@ public class GeneratorController {
     Matriz m = new Matriz(4, 5, posInit);
     private String numero;
       
-
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/p1")
     public ResponseEntity<?> genFirtsMatris() {        
         System.out.println("tamañano matris: columnas " + m.getColumns() + " filas: " + m.getRows());        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/pintar")
     public ResponseEntity<?> pintarMa() {
-
         pd.paintMatrs();
         return new ResponseEntity<>(pd.paintMatrs(), HttpStatus.ACCEPTED);
     }
 
+    /**
+     * 
+     * @return 
+     */    
     @RequestMapping(method = RequestMethod.GET, path = "/r")
     public ResponseEntity<?> getRandom() {
-
         return new ResponseEntity<>(pd.getNumRandom(), HttpStatus.ACCEPTED);
     }
 
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/prueba")
     public ResponseEntity<?> getprueba() {        //System.out.println("que es m:"+m.getMartis());
         pd.GenerateRandom(m);        
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
     public ResponseEntity<?> getPos() {                
         return new ResponseEntity<>(pd.getNewPosition(), HttpStatus.ACCEPTED);
     }    
     
+    /**
+     * 
+     * @param id1
+     * @param id2
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
     public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {        
         return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
     }
+    
     //Gnerator of number the 20 cifres
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/numero")
     public ResponseEntity<?> getNumber() {       
         numero=pd.numberOfMatriz();
@@ -88,15 +116,24 @@ public class GeneratorController {
         return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }    
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/vi")
     public ResponseEntity<?> vi() {
         return new ResponseEntity<>(pd.getVisitados(), HttpStatus.ACCEPTED);
     }       
     
+    /**
+     * 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/gnum")
     public ResponseEntity<?> allNUm() {
         pd.GenerateRandom(m);       
         numero=pd.numberOfMatriz();        
         return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }           
+    
 }

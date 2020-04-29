@@ -16,30 +16,58 @@ public class Tupla<T1, T2> {
     T1 o1;
     T2 o2;
 
-    //public Tupla(T1 o1, T2 o2) {
+    /**
+     * 
+     */
     public Tupla(){}
+    
+    /**
+     * 
+     * @param o1
+     * @param o2 
+     */
     public Tupla(T1 o1, T2 o2) {
         super();
         this.o1 = o1;
         this.o2 = o2;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public T1 getElem1() {
         return o1;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public T2 getElem2() {
         return o2;
     }
     
+    /**
+     * 
+     * @param o1 
+     */
     public void setElem1(T1 o1){
         this.o1=o1;   
     }
+    
+    /**
+     * 
+     * @param o2 
+     */
     public void setElem2(T2 o2){
         this.o2=o2;   
     }
     
-
+    /**+
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -48,6 +76,11 @@ public class Tupla<T1, T2> {
         return hash;
     }
 
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -68,6 +101,5 @@ public class Tupla<T1, T2> {
         }
         return true;
     }
-    
-    
+        
 }
