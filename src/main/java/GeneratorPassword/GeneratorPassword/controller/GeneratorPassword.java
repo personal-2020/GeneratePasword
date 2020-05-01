@@ -8,6 +8,7 @@ package GeneratorPassword.GeneratorPassword.controller;
 import GeneratorPassword.GeneratorPassword.services.CreatePaswword;
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.OpeprateNumerate;
+import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -55,7 +56,6 @@ public class GeneratorPassword {
     
     /**
      * 
-     * @return 
      */
     @RequestMapping(method = RequestMethod.GET, path = "/nnum")
     public ResponseEntity<?> getNewNumbers() {
@@ -68,13 +68,10 @@ public class GeneratorPassword {
         }
         return new ResponseEntity<>(gn.getNumeros(), HttpStatus.ACCEPTED);
     }        
-    
-    
+        
     /**
-     * 
-     * @return 
-     */
-    
+     * Esta funcion convierte los numeros de una base en otra.
+     */    
     @RequestMapping(method = RequestMethod.GET, path = "/change")
     public ResponseEntity<?> changeBaseNum() {
         numeros = gn.getNumeros();
@@ -89,8 +86,7 @@ public class GeneratorPassword {
     }
     
     /**
-     * 
-     * @return 
+     * Esta funcion retorna las frases despues de las 1 suma.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/sentencesFinal")
     public ResponseEntity<?> haveManySenteces() {
@@ -106,32 +102,26 @@ public class GeneratorPassword {
     }           
     
     /**
-     * 
-     * @return 
+     * Esta funcion realiza la suma de las frases y genera nuevas frases mas complejas.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/frsCont")
-    public ResponseEntity<?> haveFewSenteces() {
-        List<String> temp=op.getSentence();
-        
+    public ResponseEntity<?> haveFewSenteces() throws PasswordException {
+        List<String> temp=op.getSentence();        
         if(temp.isEmpty()){
             System.out.println("NO puede generarse, no hay frases para procesar.");
+            throw new PasswordException("NO puede generarse, no hay frases para procesar.");
         }else{
-            arregloPreFinal=op.getFinalFrase(temp);
-            
-        }
-        
+            arregloPreFinal=op.getFinalFrase(temp);            
+        }        
         return new ResponseEntity<>(arregloPreFinal, HttpStatus.ACCEPTED);
     }           
     
     /**
-     * 
-     * @return 
+     * Esta funcion genera las frases finales que generaran las contraseñas.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/final")
     public ResponseEntity<?> havefinal() {
         List<String> temp=crp.paswords(arregloPreFinal);
-        //System.out.println("El arreglo de ayuda es: "+crp.getArregloAyuda());
-        
         return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
     }           
     

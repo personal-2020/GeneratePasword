@@ -33,8 +33,7 @@ public class FinishPassword {
     private ArrayList<String> contraseñas=new ArrayList<String>();
     
     /**
-     * 
-     * @return 
+     * Esta funcion genera la contraseña final.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/gt")
     public ResponseEntity<?> getPassword() {        

@@ -23,22 +23,21 @@ public class Matriz {
     private int matris[][] = new int[5][4]; //C  F
 
     /**
-     *
+     *Constructor vacio.
      */
     public Matriz() {
         for (int a = 0; a < 5; a++) {
             for (int b = 0; b < 4; b++) {
                 matris[a][b] = -1;
-            }
-        }
+            }}
         iniciado = false;
     }
 
     /**
-     *
-     * @param rows
-     * @param columns
-     * @param postInitial
+     *  Constructor con varios parametros.
+     * @param rows  Entero que representa la fila de la matriz.
+     * @param columns   Entero que representa la columna de la matriz.
+     * @param postInitial   Posicion inicial donde comienza el recorrido del caballo.
      */
     public Matriz(int rows, int columns, Tupla postInitial) {
         matris = new int[rows][columns];
@@ -51,22 +50,18 @@ public class Matriz {
             for (int b = 0; b < columns; b++) {
                 matris[a][b] = -1;
             }
-        }
-        /**  * System.out.println("ahora veremos"); for (int x = 0; x < * matris.length; x++) { for (int y = 0; y < matris[x].length; y++) {
-         * System.out.println(matris[x][y]); }
-        }  */
-    }
+        }}
 
     /**
-     * 
-     * @return 
+     * Valor booleano que representa si la matriz ha sido iniciado.
+     * @return iniciado
      */
     public Boolean getIniciado() {
         return iniciado;
     }
 
     /**
-     * 
+     * Establece el valor de la variable iniciado.
      * @param iniciado 
      */
     public void setIniciado(Boolean iniciado) {
@@ -74,52 +69,56 @@ public class Matriz {
     }
 
     /**
-     * 
-     * @return 
+     * Devuelve la posicion inicial del caballo de ajedrez.
+     * @return postInitial
      */
     public Tupla getPostInitial() {
         return postInitial;
     }
 
     /**
-     * 
-     * @return 
+     * Retorna la cantidad de filas de la matriz.
+     * @return rows
      */
     public Integer getRows() {
         return rows;
     }
 
     /**
-     * 
-     * @return 
+     * Retorna la cantidad de columna de la matriz.
+     * @return columns
      */
     public Integer getColumns() {
         return columns;
     }
 
     /**
-     * 
-     * @return 
+     * Retorna el objeto matriz.
+     * @return matris
      */
     public int[][] getMartis() {
         return matris;
     }
 
     /**
-     * 
-     * @return 
+     * Retorna la cantidad de elementos de la matriz.
+     * @return elements
      */
     public Integer getElements() {
         return elements;
     }
 
     /**
-     * 
+     * Genera un numero aleatorio entre 0 y 9
      */
     public void GenerateRandom() {
         int numero = (int) (Math.random() * 10);
     }
     
+    /**
+     * Funcion que retorna el objeto en Stgring.
+     * @return 
+     */
     @Override public String toString(){ 
         return "Matriz{" + "columns=" + columns + "rows=" + rows  + '}'; 
     }        

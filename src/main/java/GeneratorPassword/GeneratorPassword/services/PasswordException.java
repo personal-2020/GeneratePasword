@@ -12,17 +12,17 @@ package GeneratorPassword.GeneratorPassword.services;
 public class PasswordException extends Exception{
     
     /**
-     * 
-     * @param message
-     * @param cause 
+     * Esta funcion genera una excepcion.
+     * @param message Un String que representa el mensaje de la excepcion.
+     * @param cause    Representa la causa de la excepcion.
      */
     public PasswordException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * 
-     * @param message 
+     * Esta funcion genera una excepcion.
+     * @param message Un String que representa el mensaje de la excepcion.
      */
     public PasswordException(String message){
         super(message);

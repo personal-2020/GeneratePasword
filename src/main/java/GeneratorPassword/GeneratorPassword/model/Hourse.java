@@ -20,7 +20,7 @@ public class Hourse {
     private Tupla postInitial;
     
     /**
-     * 
+     * Constructor vacio de objeto tipo caballo.
      */
     public Hourse(){
         movements=new ArrayList<Tupla>();
@@ -29,9 +29,9 @@ public class Hourse {
     }
     
     /**
-     * 
-     * @param column
-     * @param rows 
+     * Constructor con dos parametros que indica la posicion de inicio del caballo.
+     * @param column    Entero que indica la columna de la posicion incial.
+     * @param rows      Entero que indica la fila de la posicion inicial
      */
     public Hourse(Integer  column,Integer rows ){
         movements=new ArrayList<Tupla>();
@@ -40,23 +40,23 @@ public class Hourse {
     }
     
     /**
-     * 
-     * @param postInitial 
+     * Establece lel valor de la posicion inicial.
+     * @param postInitial Tupla que representa la posicion inicial.
      */
     public void setPostInitial(Tupla postInitial){
         this.postInitial=postInitial;
     }
  
     /**
-     * 
-     * @return 
+     * Regressa la posicion inicial del caballo.
+     * @return postInitial
      */
     public Tupla getPosInitial(){
         return postInitial;
     }
     
     /**
-     * 
+     * Retorna la lista de movimientos del caballo.
      * @return 
      */
     public List<Tupla> getMovements(){
@@ -64,7 +64,7 @@ public class Hourse {
     }
     
     /**
-     * 
+     * Esta funcion contiene los 
      */
     private void mov(){// C y F
         movements.add(new Tupla(1, -2));
