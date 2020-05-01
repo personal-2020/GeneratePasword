@@ -34,56 +34,29 @@ public class GeneratorController {
     private PaswordGeneratorServices pd;
     
     @Autowired
-    private GeneratorNumbersServices gn;
-    
-    
-    List<List<Tupla>> matDib = new ArrayList<List<Tupla>>();
-
-    Tupla posInit = new Tupla(1, 1);
-    Matriz m = new Matriz(4, 5, posInit);
+    private GeneratorNumbersServices gn;//List<List<Tupla>> matDib = new ArrayList<List<Tupla>>();
     private String numero;
-      
-    /**
-     * 
-     * @return 
-     */
-    @RequestMapping(method = RequestMethod.GET, path = "/p1")
-    public ResponseEntity<?> genFirtsMatris() {        
-        System.out.println("tamañano matris: columnas " + m.getColumns() + " filas: " + m.getRows());        
-        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-    }
 
     /**
-     * 
+     * Esta funcion representa la forma grafica de la matriz.
      * @return 
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pintar")
     public ResponseEntity<?> pintarMa() {
-        pd.paintMatrs();
         return new ResponseEntity<>(pd.paintMatrs(), HttpStatus.ACCEPTED);
     }
 
     /**
-     * 
-     * @return 
+     * Esta funcion genea un numero aleatorio.
      */    
     @RequestMapping(method = RequestMethod.GET, path = "/r")
     public ResponseEntity<?> getRandom() {
         return new ResponseEntity<>(pd.getNumRandom(), HttpStatus.ACCEPTED);
     }
 
-    /**
-     * 
-     * @return 
-     */
-    @RequestMapping(method = RequestMethod.GET, path = "/prueba")
-    public ResponseEntity<?> getprueba() {        //System.out.println("que es m:"+m.getMartis());
-        pd.GenerateRandom(m);        
-        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-    }
     
     /**
-     * 
+     * Etsa funcion trae una nueva posicion de la matriz
      * @return 
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
@@ -92,33 +65,18 @@ public class GeneratorController {
     }    
     
     /**
-     * 
-     * @param id1
-     * @param id2
-     * @return 
+     * Esta funcion regresa si la posicion pasada como parametro a sido visitada o no.
+     * @param id1   Es un entero que representa la fila de la matriz.
+     * @param id2    Es un entero que representa la fila de la matriz.
+    
      */
     @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
     public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {        
         return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
     }
     
-    //Gnerator of number the 20 cifres
     /**
-     * 
-     * @return 
-     */
-    @RequestMapping(method = RequestMethod.GET, path = "/numero")
-    public ResponseEntity<?> getNumber() {       
-        numero=pd.numberOfMatriz();
-        if(numero.equals("")){
-            numero="Matriz sin llenar, rellenela antes de solicitar el numero.";
-        }
-        return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
-    }    
-    
-    /**
-     * 
-     * @return 
+     * Este metodo informa las posiciones libres que quedan en la matriz.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/vi")
     public ResponseEntity<?> vi() {
@@ -126,13 +84,17 @@ public class GeneratorController {
     }       
     
     /**
-     * 
-     * @return 
+     * Este metodo regresa el numero de 20 cifras,
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/gnum")
+    @RequestMapping(method = RequestMethod.GET, path = "/gnum")//Este es---
     public ResponseEntity<?> allNUm() {
-        pd.GenerateRandom(m);       
-        numero=pd.numberOfMatriz();        
+        pd.generateNewMatriz();
+        pd.GenerateRandom();       
+        numero=pd.numberOfMatriz();    
+        if(numero.equals("")){
+            numero="Matriz sin llenar, rellenela antes de solicitar el numero.";
+            throw new ArithmeticException("Matriz sin llenar, rellenela antes de solicitar el numero.");
+        }        
         return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }           
     

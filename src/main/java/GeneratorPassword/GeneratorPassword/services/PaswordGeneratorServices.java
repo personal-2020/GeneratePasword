@@ -16,20 +16,19 @@ import java.util.List;
  * @author Cefar -- Dicomatico
  */
 public interface PaswordGeneratorServices {
- 
-    public void GenerateRandom(Matriz matris);
-    //public void prueba();
+
+    public Matriz getMatrizz();
+    public void GenerateRandom();
     public List<Tupla> posibilitis(Tupla position); 
     public String paintMatrs();
     public Tupla getNewPosition();
     public Integer getNumRandom();
     public String numberOfMatriz();
     public Boolean esta(Tupla pos);
-    public String getNumeroFinal();
-    
-    public List<Tupla> getVisitados();
-    
+    public String getNumeroFinal();    
+    public List<Tupla> getVisitados();    
     public String getNumero();
     public void setNumero(String numero);
+    public void generateNewMatriz();
     
 }

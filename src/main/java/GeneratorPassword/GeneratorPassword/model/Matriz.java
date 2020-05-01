@@ -52,12 +52,9 @@ public class Matriz {
                 matris[a][b] = -1;
             }
         }
-        /**
-         * System.out.println("ahora veremos"); for (int x = 0; x <
-         * matris.length; x++) { for (int y = 0; y < matris[x].length; y++) {
+        /**  * System.out.println("ahora veremos"); for (int x = 0; x < * matris.length; x++) { for (int y = 0; y < matris[x].length; y++) {
          * System.out.println(matris[x][y]); }
-        }
-         */
+        }  */
     }
 
     /**
@@ -122,26 +119,9 @@ public class Matriz {
     public void GenerateRandom() {
         int numero = (int) (Math.random() * 10);
     }
-
-    /**
-     * 
-     * @return 
-     */
-    public Integer getTamC() {
-        return columns;
-    }
-
-    /**
-     * 
-     * @return 
-     */
-    public Integer getTamF() {
-        return rows;
-    }
-
-    /**
-     * @Override public String toString() { return "Matriz{" + "dato=" + dato +
-     * "pos=" + pos + "nombre=" + nombre + '}'; }
-     */
+    
+    @Override public String toString(){ 
+        return "Matriz{" + "columns=" + columns + "rows=" + rows  + '}'; 
+    }        
     
 }

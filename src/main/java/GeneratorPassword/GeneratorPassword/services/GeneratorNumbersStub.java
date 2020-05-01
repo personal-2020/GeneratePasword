@@ -43,8 +43,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             numeros.add(BigInteger.valueOf(Integer.parseInt(numero.substring(a, b))));
             a = b;
             b = b + 5;
-            num++;
-        }
+            num++;}
     }
 
     /**
