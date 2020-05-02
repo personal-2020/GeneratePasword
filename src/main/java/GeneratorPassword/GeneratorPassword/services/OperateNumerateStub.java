@@ -17,17 +17,14 @@ import org.springframework.stereotype.Service;
 public class OperateNumerateStub implements OpeprateNumerate {
 
     private List<String> sentences = new ArrayList<String>();
-
     private List<List<String>> sentencesOfPasword = new ArrayList<List<String>>();
-
-    List<String> temporal = new ArrayList<String>();
-    //Se creara 2 array mas, uno con lasfrases de menor de longitud 5 y otro con las frases restantes.
+    List<String> temporal = new ArrayList<String>();//Se creara 2 array mas, uno con lasfrases de menor de longitud 5 y otro con las frases restantes.
     private List<String> sentecesGreather = new ArrayList<String>();
     private List<String> sentecesMinors = new ArrayList<String>();
     
     /**
-     * 
-     * @return 
+     * Esta funcion realiza la suma de las 4 frases inicialmente generadas.
+     * @return sentences
      */    
     @Override
     public List<String> getSentenceOperateNumerate() {
@@ -114,8 +111,8 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
 
     /**
-     * 
-     * @param frase 
+     * Esta funcion cambia la frase de tipo string a tipo lista.
+     * @param frase  String que contiene las frases a convertir.
      */
     @Override    
     public void SeparateNumber(String frase) {
@@ -128,8 +125,8 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
 
     /**
-     * 
-     * @param frase 
+     * Esta funcion cambia un conjunto de frases de tipo string a tipo lista.
+     * @param frase  Lista de String que contiene las frases a convertir.
      */
     @Override
     public void SeparateNumber(List<String> frase) {
@@ -144,8 +141,9 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
     
     /**
-     * 
-     * @return 
+     * Retorna una lista de lista de tipo Syting que contiene 
+     * las sentencias de la contraseña.
+     * @return sentencesOfPasword
      */
     @Override
     public List<List<String>> getListL() {
@@ -153,7 +151,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
     
     /**+
-     * 
+     * Limpia las sentencias de las contraseñas.
      */
     @Override
     public void clearSentences() {
@@ -161,7 +159,7 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
     
     /**
-     * 
+     * Limpia la lista de las oraciones.
      */
     @Override
     public void clearSentence() {
@@ -169,8 +167,8 @@ public class OperateNumerateStub implements OpeprateNumerate {
     }
     
     /**
-     * 
-     * @return 
+     * Retoirna la lista de las horaciones.
+     * @return sentences
      */
     @Override
     public List<String> getSentence(){
@@ -179,13 +177,13 @@ public class OperateNumerateStub implements OpeprateNumerate {
     
     /**
      * FUncion para generar las frases finales q seran usadas para generar                     
-     * @param frase
-     * @return 
+     * @param frase Lista de tipo String q contiene las frases que seran 
+     * las sentencias finales.
+     * @return answer
      */
     @Override
     public List<String> getFinalFrase(List<String> frase){
-        List<String> answer = new ArrayList<>();
-        //Porcederemos a separar las frases ammayores de las menores        
+        List<String> answer = new ArrayList<>(); //Porcederemos a separar las frases ammayores de las menores        
         for (int i=0;i<frase.size();i++){
             String h=frase.get(i);
             if(h.length()<3){

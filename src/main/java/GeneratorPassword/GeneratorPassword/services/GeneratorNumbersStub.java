@@ -25,14 +25,14 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     public List<String> numerosConvertidos=new ArrayList<String>();
     
     /**
-     * 
-     * 
+     * Constructor vacio.
      */
     public GeneratorNumbersStub() {}
 
     /**
-     * 
-     * @param numero 
+     * Esta funcionj genera los primeros 4 nuemros a partir del numero inicial 
+     * generado por el  recorrido del caballo.
+     * @param numero String que representa el numero inicial de 20 cifras.
      */
     @Override
     public void gellAllNum(String numero) {
@@ -47,16 +47,16 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     }
 
     /**
-     * 
-     * @param numerosConvertidos 
+     * Estableve el numero converitdo
+     * @param numerosConvertidos Variable de los numeros convertidos.
      */
     public void setNumverCovertido(List<String> numerosConvertidos){
         this.numerosConvertidos=numerosConvertidos;    
     }
     
     /**
-     * 
-     * @return 
+     * Retorna una ista de los numeros convertidos.
+     * @return numerosConvertidos
      */
     @Override
     public List<String> getNumberConvertido(){
@@ -64,8 +64,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     }
     
     /**
-     * 
-     * @return 
+     * Retorna una lista de los numeros de gran tamaño.
+     * @return numeros Lista de numeros de tipo BigInteger.
      */
     @Override
     public List<BigInteger> getNumeros() {
@@ -73,27 +73,11 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     }
     
     /**
-     * 
-     * @return 
-     */
-    @Override
-    public List<String> separetaNumbers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    /**
-     * 
-     * @param numero 
-     */
-    public void getNumberBaseCorrect(String[] numero) {
-        String[] num = numero;//return "";
-    }
-    
-    /**
-     * 
-     * @param numero
-     * @param base
-     * @return 
+     * Esta funcion convierte un numero de una base 10 a otra.
+     * @param numero    Numero de tipo Big integer en base 10.
+     * @param base      Numero de tipo integer que representa 
+     * la base a cambiar el numero.
+     * return res  string que contiene el numero convertido
      */
     @Override
     public String conversNumbers(BigInteger numero, Integer base) {
@@ -103,35 +87,35 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
         BigInteger mod = BigInteger.ONE;
         BigInteger cant = BigInteger.ONE;
         BigInteger t = BigInteger.ONE;
-        BigInteger resp = BigInteger.ZERO; //System.out.println("como va resp in"+resp);
-        while (numero.compareTo(BigInteger.valueOf(base)) >= 0) {//System.out.println("Base : "+base);//System.out.println("que numero se va trabajando: "+numero);
-            mod = numero.mod(BigInteger.valueOf(base));//System.out.println("que arroja el mod: "+mod);  //System.out.println("que arroja el el div: "+numero.divide(BigInteger.valueOf(base)));
+        BigInteger resp = BigInteger.ZERO; 
+        while (numero.compareTo(BigInteger.valueOf(base)) >= 0) {
+            mod = numero.mod(BigInteger.valueOf(base));
             numero = numero.divide(BigInteger.valueOf(base));
-            t = t.multiply(mod); //System.out.println("que se adiciona : " + t.toString());
+            t = t.multiply(mod); 
             prueba1.add(t.toString());
-            t = t.multiply(cant);//System.out.println("como va t :"+t);//System.out.println("que es resp antes de sumar  :"+resp);
+            t = t.multiply(cant);
             resp = resp.add(t);
             t = BigInteger.ONE;
-            cant = cant.multiply(BigInteger.valueOf(10));  //System.out.println("va quedando : "+resp);
+            cant = cant.multiply(BigInteger.valueOf(10));  
         }        
-        t = BigInteger.ONE;//System.out.println("que es cant : "+cant);
+        t = BigInteger.ONE;
         prueba1.add(numero.toString());
         Collections.reverse(prueba1);
         t = t.multiply(numero);
         t = t.multiply(cant);
         String res = "";
         prueba2=getNumInCorrectBase(prueba1);
-        for (int q = 0; q < prueba1.size(); q++) {//System.out.println("que vemos : "+prueba2.get(q));
+        for (int q = 0; q < prueba1.size(); q++) {
             String d = prueba2.get(q);
             res = res.concat(d);
-        }//System.out.println("mirar la res lista: " + res); //resp = resp.add(t);
+        }
         return res;
     }
     
     /**
-     * 
-     * @param numero
-     * @return 
+     * Convierte los numeros en base 10 a base hexadecimal
+     * @param numero Lista de numeros tipo String.
+     * @return respuesta
      */
     public List<String> getNumInCorrectBase(List<String> numero) {
         List<String> respuesta = new ArrayList<String>();
@@ -159,13 +143,14 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
                 default:
                     respuesta.add(numero.get(i));
             }
-        }//System.out.println("que regresa: " + respuesta);
+        }
         return respuesta;        
     }
 
     /**
-     * 
-     * @param numero 
+     * Esta funcion convierte el numero de tipo Biginteger a tipo String
+     * @param numero Lista de Numeros de tipo BigInteger que contiene 
+     * los numeros convertidos.
      */
     @Override
     public void conversNumb(List<BigInteger> numero) {
@@ -193,7 +178,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
     }
     
     /**
-     * 
+     * Funcion que limpia la lista de numeros
      */
     @Override
     public void resetNumeros(){

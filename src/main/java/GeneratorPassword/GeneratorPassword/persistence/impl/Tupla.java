@@ -17,14 +17,14 @@ public class Tupla<T1, T2> {
     T2 o2;
 
     /**
-     * 
+     * Constructor vacio.
      */
     public Tupla(){}
     
     /**
-     * 
-     * @param o1
-     * @param o2 
+     * Constructor con dos parametros de Objetos.
+     * @param o1    Objeto de cualquier tipo.
+     * @param o2    Objeto de cualquier tipo.
      */
     public Tupla(T1 o1, T2 o2) {
         super();
@@ -33,40 +33,42 @@ public class Tupla<T1, T2> {
     }
     
     /**
-     * 
-     * @return 
+     * Devuelve el elemento de tipo T1. (El tipo de objeto determinado 
+     * por el usuario)
+     * @return o1
      */
     public T1 getElem1() {
         return o1;
     }
 
     /**
-     * 
-     * @return 
+     * Devuelve el elemento de tipo T1. (El tipo de objeto determinado 
+     * por el usuario)
+     * @return o2
      */
     public T2 getElem2() {
         return o2;
     }
     
     /**
-     * 
-     * @param o1 
+     * Establece un elemento de tipo t1.(Designado por el usuario)
+     * @param o1 Objeto de tipo T1(Determinado por el usuario).
      */
     public void setElem1(T1 o1){
         this.o1=o1;   
     }
     
     /**
-     * 
-     * @param o2 
+     * Establece un elemento de tipo t1.(Designado por el usuario)
+     * @param o2 Objeto de tipo T1(Determinado por el usuario).
      */
     public void setElem2(T2 o2){
         this.o2=o2;   
     }
     
     /**+
-     * 
-     * @return 
+     * Retorna un numero que es el numero has del objeto.
+     * @return hash
      */
     @Override
     public int hashCode() {
@@ -77,9 +79,8 @@ public class Tupla<T1, T2> {
     }
 
     /**
-     * 
-     * @param obj
-     * @return 
+     * Esta funcion informa si un objetro es igual-
+     * @param obj Objeto de tipo Objeto
      */
     @Override
     public boolean equals(Object obj) {

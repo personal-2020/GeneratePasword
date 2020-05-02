@@ -8,6 +8,7 @@ package GeneratorPassword.GeneratorPassword.controller;
 import GeneratorPassword.GeneratorPassword.model.Matriz;
 import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
+import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import GeneratorPassword.GeneratorPassword.services.PasswordGeneratorStub;
 import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ public class GeneratorController {
 
     /**
      * Esta funcion representa la forma grafica de la matriz.
-     * @return 
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pintar")
     public ResponseEntity<?> pintarMa() {
@@ -56,8 +56,7 @@ public class GeneratorController {
 
     
     /**
-     * Etsa funcion trae una nueva posicion de la matriz
-     * @return 
+     * Esta funcion trae una nueva posicion de la matriz
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
     public ResponseEntity<?> getPos() {                
@@ -67,8 +66,7 @@ public class GeneratorController {
     /**
      * Esta funcion regresa si la posicion pasada como parametro a sido visitada o no.
      * @param id1   Es un entero que representa la fila de la matriz.
-     * @param id2    Es un entero que representa la fila de la matriz.
-    
+     * @param id2    Es un entero que representa la fila de la matriz.    
      */
     @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
     public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {        
@@ -87,13 +85,13 @@ public class GeneratorController {
      * Este metodo regresa el numero de 20 cifras,
      */
     @RequestMapping(method = RequestMethod.GET, path = "/gnum")//Este es---
-    public ResponseEntity<?> allNUm() {
+    public ResponseEntity<?> allNUm() throws PasswordException {
         pd.generateNewMatriz();
         pd.GenerateRandom();       
         numero=pd.numberOfMatriz();    
         if(numero.equals("")){
             numero="Matriz sin llenar, rellenela antes de solicitar el numero.";
-            throw new ArithmeticException("Matriz sin llenar, rellenela antes de solicitar el numero.");
+            throw new PasswordException("Matriz sin llenar, rellenela antes de solicitar el numero.");
         }        
         return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
     }           

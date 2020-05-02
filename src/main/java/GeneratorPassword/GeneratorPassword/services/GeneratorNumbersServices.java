@@ -17,7 +17,6 @@ public interface GeneratorNumbersServices {
     
     public List<String> getNumberConvertido();
     public void conversNumb(List<BigInteger> numero);
-    public List<String> separetaNumbers();
     public String conversNumbers(BigInteger numero, Integer base);
     public void gellAllNum(String numero) ;
     public List<BigInteger> getNumeros();

@@ -54,6 +54,8 @@ public class GeneratorPassword {
     private List<String> arregloFinal=new ArrayList<String>();
     private List<String> arregloAyuda=new ArrayList<String>();
     
+    private List<String> temp=new ArrayList<String>();
+    
     /**
      * 
      */
@@ -121,7 +123,11 @@ public class GeneratorPassword {
      */
     @RequestMapping(method = RequestMethod.GET, path = "/final")
     public ResponseEntity<?> havefinal() {
-        List<String> temp=crp.paswords(arregloPreFinal);
+        
+        if(temp.isEmpty()){
+            temp=crp.paswords(arregloPreFinal);
+        }
+        
         return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
     }           
     

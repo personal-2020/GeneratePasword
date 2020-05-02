@@ -29,28 +29,26 @@ public class Diccionario {
     private static List<Tupla> arrF;
 
     /**
-     * 
+     * Constructor vacio.
      */
     public Diccionario() {
 
     }
 
     /**
-     * 
-     * @return 
+     * Retorna el elemento Hasmap
+     * @return map
      */
     public Map<String, List<Tupla>> getMap(){
         return map;
     }
     
     /**
-     * 
-     * @param letra
-     * @return
+     * Retorna una lista de tipo tupla con las diferentes palabras.
+     * @param letra Letra para buscar palabra
      * @throws PasswordException 
      */
-    public List<Tupla> getListOfLetter(String letra) throws PasswordException{               
-        
+    public List<Tupla> getListOfLetter(String letra) throws PasswordException{                       
         if(map.containsKey(letra)){                        
              return map.get(letra);       
         }else{            
@@ -59,9 +57,8 @@ public class Diccionario {
     }
     
     /**
-     * 
-     * @param Letra
-     * @return
+     * Esta funcion retorna una palabra deacuerdo con la letra escogida.
+     * @param Letra Objeto tipo String que representa la letra a escoger
      * @throws PasswordException 
      */
     public String getLetra(String Letra) throws PasswordException{        
@@ -72,19 +69,11 @@ public class Diccionario {
         palabras.set(numero,t);
         rechangeinMap(Letra, palabras);
         return (String)t.getElem1();
-    }
+    }    
     
     /**
-     * 
-     * @return 
-     */    
-    public String getNUmero(){
-        return String.valueOf((int) (Math.random() * 10));
-    }
-    
-    /**
-     * 
-     * @param Letra 
+     * Disminuye el nivel de las palabras con nivel alto.
+     * @param Letra La letra que indicara la lista a reducir los niveles.
      */
     public void downLevel(String Letra){        
         Map<String, List<Tupla>> temp= new HashMap<String, List<Tupla>>();
@@ -106,18 +95,18 @@ public class Diccionario {
     }  
     
     /**
-     * 
-     * @param map 
+     * Establece el mapa.
+     * @param map El mapa donde se almacenan todas las palabras.
      */
     public void setMap(Map<String, List<Tupla>> map){
         this.map=map;        
     }
     
     /**
-     * 
-     * @param letra
-     * @param tupla
-     * @throws PasswordException 
+     * Esta funcion reemplaza una lista de y su letra del hasMap.
+     * @param letra Letra que indicara el tipo de lista que se agregara.
+     * @param tupla Tupla que contiene las palabras y su puntaje de uso.
+     * @throws PasswordException    
      */
     public void rechangeinMap(String letra, List<Tupla> tupla) throws PasswordException{        
         if(map.containsKey(letra)){                                                
@@ -150,7 +139,6 @@ atajo,atasco,atiborrar,atinar,atizar,atosigar,atrás,atributo,atroz,aula,auricul
         arrB.add(new Tupla("barómetro", 0));arrB.add(new Tupla("Berlinés", 0));arrB.add(new Tupla("Beso", 0));arrB.add(new Tupla("bélico", 0));arrB.add(new Tupla("Berberecho", 0));arrB.add(new Tupla("beduino", 0));arrB.add(new Tupla("beato", 0));arrB.add(new Tupla("Búnker", 0));arrB.add(new Tupla("barbudo", 0));arrB.add(new Tupla("Bastidor", 0));        
 /**babero,báculo,badén,bagaje,bailador,bajamar,bajar,bajonazo,baladí,balanza,balar,balbuceo,baldazo,balneario,balido,bálsamo,banano,banco,bandazo,baqueta,barbarismo,barco,bardo,barniz,barrer,barro,base,batería,bayo,bebedizo,becada,becerro,bedel,beicon,beige,bellaco,belleza,bello,beluga,bemoles,bendecir,beneficio,bengalí,beodo,bercial,berilio,berlinga,berza,besana,
 bestia,beta,bicho,bicicleta,biela,bífida,bikini,binario,bingo,biología,birlar,birlibirloque,bledo,bocina,boicot,boina,bonito,boñiga,bragas,brea,brida,brillo,broma,bronco,brujo,bucal,búcaro,budista,buey,búfalo,buitre,bujía,bulevar,búlgaro,bulo,buñuelo,burdo,burgués,butano, **/      
-
 //cabás cabed caben  cabes cabía cabio cable cabos cabra  cabré cabro cacán cacao  cacea cacee caceé cacen caceo caceó caces cacha cache caché cacho cachó cachú cacle cacos cacto caéis caeré cafés cafiz cafre cagad cagan  cagas cague cagué cahíz caían caías caico caída caído caiga caigo caima caire cairo caite cajas cajel cajín cajón calad calan calán cálao calar calas calca calce calcé calco calcó calda caldo cuñes cuños cuplé cupón cupos cuque cuqué curad cural curco curdo curen cures curie curio curro curtí curul curvo cusan cusen cusma cúter cutio cundo cunea cunen cuneo cuneó culos culpa culón
 //calen caler cales calés cáliz calla calle callé callo calló calma calme calmé  calmó calón  calós calta calva calve calvé calvo calvó calza  calzó camal camao camas camba cambe cambo camio camón campa campe campé campó canas canda cande candé candi cando candó canea canee caneé caneo caneó canes canés  caney canez canga cango cania canil canje canoa canon canos cansa canse cansé canso cansó cante canté canto cantó cantú cañal cañar cutis cutra cuyos cuzma cúneo cunes cuñad cuñal cuñan cuñar cuñas cuñen cuide cuidé cuido cuidó cuija cuina cuino cuita cujas cujón cular culas culea culee culeé culén culeo     
 //cañón caños caoba caobo capad capan  capas capás cauza cavad cavan caván cavar cavas cávea caven caves cavia cavío cavón cayán   colan colar colas colea colee coleé colen coleo coleó  cóleo coles colgó colín colla colle colma  colme colmé colmo colmó colón color  cosas cosca cosco  coscó cosed cosen  coses cosía cosió cosos cospe costa  coste costé costo costó cotad cotan cotar cotas coten cotes  cotín cotón cotos  cotúa couta  coxis coyán coyol crack crane crasa craso  craza cread crean rear creas  crece crecí credo creed creen creer crees creía cúmel cumpa cunad cunan cunar cunas cunda cunde cundí 
@@ -211,9 +199,9 @@ bestia,beta,bicho,bicicleta,biela,bífida,bikini,binario,bingo,biología,birlar,
         arrF.add(new Tupla("Filósofo", 0));arrF.add(new Tupla("Fabada", 0));arrF.add(new Tupla("Fresa", 0));arrF.add(new Tupla("Fabrica", 0));arrF.add(new Tupla("Fabula", 0));arrF.add(new Tupla("Fonetista", 0));
         arrF.add(new Tupla("Filtro", 0));arrF.add(new Tupla("Frutilla", 0));arrF.add(new Tupla("Fresquilla", 0));arrF.add(new Tupla("Fito Páez", 0));arrF.add(new Tupla("Fiyi", 0));arrF.add(new Tupla("Furla", 0));
         arrF.add(new Tupla("Faneca", 0));arrF.add(new Tupla("Fanny Lú", 0));arrF.add(new Tupla("Foca", 0));arrF.add(new Tupla("Francia", 0));arrF.add(new Tupla("Fantasma", 0));arrF.add(new Tupla("Finlandia", 0));
-        arrF.add(new Tupla("Factura", 0));arrF.add(new Tupla("Farmacólogo", 0));arrF.add(new Tupla("Farmacia", 0));arrF.add(new Tupla("Frutipan", 0));arrF.add(new Tupla("Feminismo", 0));arrF.add(new Tupla("Flan", 0));
-        arrF.add(new Tupla("Frijoles", 0));arrF.add(new Tupla("Familia", 0));arrF.add(new Tupla("Fideicomiso", 0));arrF.add(new Tupla("Fornarina", 0));arrF.add(new Tupla("Fenogreco", 0));arrF.add(new Tupla("Fermentación", 0));arrF.add(new Tupla("Fobia", 0));arrF.add(new Tupla("Fisioterapeuta", 0));
-
+        arrF.add(new Tupla("Factura", 0));arrF.add(new Tupla("Farmacólogo", 0));arrF.add(new Tupla("Farmacia", 0));arrF.add(new Tupla("Frutipan", 0));arrF.add(new Tupla("Feminismo", 0));arrF.add(new Tupla("Flan", 0));arrF.add(new Tupla("Fisioterapeuta", 0));
+        arrF.add(new Tupla("Frijoles", 0));arrF.add(new Tupla("Familia", 0));arrF.add(new Tupla("Fideicomiso", 0));arrF.add(new Tupla("Fornarina", 0));arrF.add(new Tupla("Fenogreco", 0));arrF.add(new Tupla("Fermentación", 0));arrF.add(new Tupla("Fobia", 0));
+        
         map.put("A", arrA);
         map.put("B", arrB);
         map.put("C", arrC);

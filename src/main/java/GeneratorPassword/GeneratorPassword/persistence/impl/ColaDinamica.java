@@ -5,33 +5,33 @@
  */
 package GeneratorPassword.GeneratorPassword.persistence.impl;
 
+import GeneratorPassword.GeneratorPassword.services.PasswordException;
+
 /**
- *
+ *  
  * @author lanosce
  * @param <T>
  */
 public class ColaDinamica<T> {
     
-    //Atributos
-    private Nodo<T> primero;
+    private Nodo<T> primero;//Atributos
     private Nodo<T> anterior;
     private Nodo<T> ultimo;
     private int tamanio;
  
     /**
-     * 
+     * Constructor vacio de Cola Dinamica.
      */
     public ColaDinamica() {
         primero = null;
         anterior=null;
         ultimo = null;
         tamanio = 0;
- 
     }
  
     /**
      * Indica si la cola esta vacia
-     * @return 
+     * @return primero
      */
     public boolean isEmpty() {
         return primero == null;
@@ -39,7 +39,7 @@ public class ColaDinamica<T> {
  
     /**
      * Indica el tamaño de la cola
-     * @return 
+     * @return tamanio
      */
     public int size() {
         return tamanio;
@@ -47,19 +47,18 @@ public class ColaDinamica<T> {
  
     /**
      * Devuelve el primer elemento en la cola
-     * @return 
+     * @return primero.getElemento()
      */
     public T primero() {
         if (isEmpty()) {
             return null;
         }
- 
         return primero.getElemento();
     }
  
     /**
      * Elimina y devuelve el primer elemento de la cola
-     * @return 
+     * @return elemento
      */
     public T dequeue() { 
         if (isEmpty()) {
@@ -73,13 +72,12 @@ public class ColaDinamica<T> {
         if (isEmpty()) {
             ultimo = null;
         }
- 
         return elemento;
     }
 
     /**
-     * 
-     * @return 
+     * Esta funcion es un constructor que define un elemento T con referencia a su ultimo nodo.
+     * @return elemento
      */
     public T def(){    
         if (isEmpty()) {
@@ -97,8 +95,8 @@ public class ColaDinamica<T> {
 
     /**
      * Añade un nuevo elemento a la cola
-     * @param elemento
-     * @return 
+     * @param elemento Elemento que sera agregada a la cola.
+     * @return aux.getElemento()
      */
     public T enqueue(T elemento) { 
         Nodo<T> aux = new Nodo(elemento, null, null); 
@@ -122,7 +120,7 @@ public class ColaDinamica<T> {
  
     /**
      * Muestra el contenido
-     * @return 
+     * @return cadena
      */
     public String toString() {
         if (isEmpty()) {

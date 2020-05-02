@@ -15,15 +15,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CreatePaswordStub implements CreatePaswword{
-
     
-    private List<String> arregloAyuda = new ArrayList<String>();
-    
+    private List<String> arregloAyuda = new ArrayList<String>();    
     private List<String> arregloFinal =  new ArrayList<String>();
     
     /**
-     * 
-     * @return 
+     * Devuelve una lista con el arreglo ayuda.
+     * @return arregloAyuda
      */
     @Override
     public List<String> getArregloAyuda(){
@@ -31,8 +29,8 @@ public class CreatePaswordStub implements CreatePaswword{
     }
     
     /**
-     * 
-     * @return 
+     * Devuelve una lista con el arreglo final.
+     * @return arregloFinal
      */
     @Override
     public List<String> getArregloFinal(){
@@ -40,19 +38,19 @@ public class CreatePaswordStub implements CreatePaswword{
     }   
     
     /**
-     * Funcion que genera las contraseñas:
-     * 
-     *La contraseña, que se deben guiar por las siguientes reglas:
-            *Si hay solo 2 letras en la frase se pasa a "Arreglo ayuda"
-            *Si queda aun letras suficientes para generar una contraseña se usan, 
-                por el contrario se desechan.
-            * UNa contraseña apta tiene almenos 3 palabras separaradas por un numeor, 
-                 si no cumple con esto se desecha.
-            * En caso de no haber letras de ayuda  "arreglo de ayuda", 
-                se ignora el hecho y se continua con la frase. En este caso la 
-                contraseña debe mantener 3 palabras
-     * @param frase
-     * @return 
+    * Funcion que revisa si la frase se considera como valida para 
+    * una contraseña o como vector ayuda.
+    *La contraseña, que se deben guiar por las siguientes reglas:
+        *   Si hay solo 2 letras en la frase se pasa a "Arreglo ayuda"
+        *   Si queda aun letras suficientes para generar una contraseña se usan, 
+            por el contrario se desechan.
+        *   Una contraseña apta tiene almenos 3 palabras separaradas por un numeor, 
+            si no cumple con esto se desecha.
+        * En caso de no haber letras de ayuda  "arreglo de ayuda", 
+            se ignora el hecho y se continua con la frase. En este caso la 
+             contraseña debe mantener 3 palabras
+    * @param frase  Lista de tipo String que ontiene la frase.
+    * @return   arregloFinal   
      */
     @Override
     public List<String> paswords(List<String> frase) {//Analizando si se debe agergar al vector ayuda....
@@ -68,7 +66,7 @@ public class CreatePaswordStub implements CreatePaswword{
                 }                
             }
             if( nn-nl>=2){
-                arregloAyuda.add(g);//frase.remove(i);
+                arregloAyuda.add(g);
             }else if(nn-nl<2){
                 arregloFinal.add(g);
             }                         
@@ -77,9 +75,8 @@ public class CreatePaswordStub implements CreatePaswword{
     }
     
     /**
-     * 
-     * @param cadena
-     * @return 
+     * Esta funcion revisa si el string es o no numerico.
+     * @param cadena    String que represeta la cadena.
      */
     private static boolean isNumeric(String cadena){
 	try {

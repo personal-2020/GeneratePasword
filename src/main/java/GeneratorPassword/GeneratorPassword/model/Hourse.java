@@ -57,7 +57,7 @@ public class Hourse {
     
     /**
      * Retorna la lista de movimientos del caballo.
-     * @return 
+     * @return movements
      */
     public List<Tupla> getMovements(){
         return movements;

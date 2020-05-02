@@ -15,10 +15,10 @@ public class Nodo<T> {//Atributos
     private Nodo<T> siguiente; //Apunta al siguiente nodo
      
     /**
-     * 
-     * @param elemento
-     * @param siguiente
-     * @param anterior 
+     * Constructor de Nodo.
+     * @param elemento  Elemento de tipo Objeto.
+     * @param siguiente El Siguiente nodo de tipo Nodo<T>
+     * @param anterior El Siguiente nodo de tipo Nodo<T>
      */
     public Nodo(T elemento, Nodo<T> siguiente, Nodo<T> anterior){
         this.elemento = elemento;
@@ -26,49 +26,48 @@ public class Nodo<T> {//Atributos
         this.siguiente = siguiente;
     }
  
-    //Metodos
     /**
-     * 
-     * @return 
+     * Retorna el elemento de tipo T.
+     * @return elemento
      */
     public T getElemento() {
         return elemento;
     }
  
     /**
-     * 
-     * @return 
+     * Retorna el elemento anterior de Tipo Nodo<T>
+     * @return anterior
      */
     public Nodo<T> getAnterior(){
         return anterior;    
     }
     
     /**
-     * 
-     * @param anterior 
+     * Establece el objeto Anterior.
+     * @param anterior Objeto de tipo Nodo<T>
      */
     public void setAnterior(Nodo<T> anterior){
         this.anterior=anterior;    
     }
     
     /**
-     * 
-     * @param elemento 
+     * Establece el elemento de tipo T.
+     * @param elemento De tipo T.
      */
     public void setElemento(T elemento) {
         this.elemento = elemento;
     }
     
     /**
-     * 
-     * @return 
+     * Retorna el elemento siguiente
+     * @return siguiente
      */
     public Nodo<T> getSiguiente() {
         return siguiente;
     }
     
     /**
-     * 
+     * Establece el elemento siguiente.
      * @param siguiente 
      */
     public void setSiguiente(Nodo<T> siguiente) {
@@ -76,7 +75,7 @@ public class Nodo<T> {//Atributos
     }
     
     /**
-     * 
+     * Funciones que representa el elemento en string.
      * @return 
      */
     @Override
