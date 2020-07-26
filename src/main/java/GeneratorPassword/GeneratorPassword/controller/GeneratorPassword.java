@@ -127,7 +127,8 @@ public class GeneratorPassword {
         if(temp.isEmpty()){
             temp=crp.paswords(arregloPreFinal);
         }
-        
+        //RECORDAR REVISAR ESTA FUNCION PARA RECODIFICACION
+        //REVISAR FUNCIONES GENERATEPassword(/final) y fiinishpassword pare recodificacion
         return new ResponseEntity<>(temp, HttpStatus.ACCEPTED);
     }           
     
