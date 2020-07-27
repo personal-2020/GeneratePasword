@@ -6,7 +6,7 @@
 package GeneratorPassword.GeneratorPassword.services;
 
 import GeneratorPassword.GeneratorPassword.model.Matriz;
-import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
+import GeneratorPassword.GeneratorPassword.model.Tupla;
 import java.util.List;
 
 

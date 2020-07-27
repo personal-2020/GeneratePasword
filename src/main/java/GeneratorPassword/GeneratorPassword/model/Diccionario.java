@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.persistence.impl;
+package GeneratorPassword.GeneratorPassword.model;
 
 import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import java.util.ArrayList;

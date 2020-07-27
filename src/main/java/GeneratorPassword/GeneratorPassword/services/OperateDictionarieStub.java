@@ -5,7 +5,7 @@
  */
 package GeneratorPassword.GeneratorPassword.services;
 
-import GeneratorPassword.GeneratorPassword.persistence.impl.Diccionario;
+import GeneratorPassword.GeneratorPassword.model.Diccionario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;

@@ -6,7 +6,7 @@
 package GeneratorPassword.GeneratorPassword.controller;
 
 import GeneratorPassword.GeneratorPassword.model.Matriz;
-import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
+import GeneratorPassword.GeneratorPassword.model.Tupla;
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import GeneratorPassword.GeneratorPassword.services.PasswordGeneratorStub;

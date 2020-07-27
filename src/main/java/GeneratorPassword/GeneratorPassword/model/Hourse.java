@@ -6,7 +6,6 @@
 package GeneratorPassword.GeneratorPassword.model;
 
 
-import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,7 +7,7 @@ package GeneratorPassword.GeneratorPassword.services;
 
 import GeneratorPassword.GeneratorPassword.model.Hourse;
 import GeneratorPassword.GeneratorPassword.model.Matriz;
-import GeneratorPassword.GeneratorPassword.persistence.impl.Tupla;
+import GeneratorPassword.GeneratorPassword.model.Tupla;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;

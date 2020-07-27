@@ -5,7 +5,7 @@
  */
 package GeneratorPassword.GeneratorPassword.services;
 
-import GeneratorPassword.GeneratorPassword.persistence.impl.ColaDinamica;
+import GeneratorPassword.GeneratorPassword.model.ColaDinamica;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
