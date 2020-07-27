@@ -45,10 +45,7 @@ public class FinishPassword {
     @Autowired
     private CreatePaswword crp;
 
-    private ArrayList<String> contraseñas = new ArrayList<String>();
-
-    private GeneratorPassword gP;
-    private GeneratorController gC;
+    private ArrayList<String> contraseñas = new ArrayList<String>();  
 
     /**
      * Esta funcion genera la contraseña final.
@@ -71,8 +68,8 @@ public class FinishPassword {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/gtn")
-    public ResponseEntity<?> getPasswordNew() throws PasswordException {
-        
+    public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
+        try{
         /////Primer paso generar el numero cada vez que entra
         pd.generateNewMatriz();
         pd.GenerateRandom();
@@ -119,29 +116,17 @@ public class FinishPassword {
         if (temp1.isEmpty()) {
             temp1 = crp.paswords(arregloPreFinal);
         }
-        //7 paso
-        
+        //7 paso        
         String contraseña;
         List<String> as = crp.getArregloAyuda();
         od.getListHelp(as);
-        if (contraseñas.isEmpty()) {
-            contraseñas = (ArrayList<String>) od.getPaswword(crp.getArregloFinal());
-            if(contraseñas.size()>0){
-                System.out.println("lista de contraseñas : " + contraseñas.toString());
-                contraseña = contraseñas.get(0);
-                contraseñas.remove(0);
-            }else{
-                contraseña="";
-            }
-        } else {
-            contraseña = contraseñas.get(0);
-            contraseñas.remove(0);
-        }
-        
+        contraseña=od.getContrasena(crp.getArregloFinal());
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
+        }catch (Exception ex){
+            throw new Exception();               
+        }
     }
 
 }
-
 
 //RECORDAR REVISAR EXCEPCIONES...

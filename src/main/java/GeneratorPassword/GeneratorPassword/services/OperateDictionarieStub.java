@@ -44,6 +44,31 @@ public class OperateDictionarieStub implements OperateDictionarie {
     public List<String> getArregloAyuda() {
         return arregloAyuda;
     }
+    /**
+     * Esta funcion retorna solo una contraseña de la lista de contraseñas 
+     * o indica que se debe generar una nueva lista.    
+     * @param arrFinal  Arreglo que contiene las frases finales para generar la 
+     * contraseña.
+     * @return  respuesta
+     */
+
+    public String getContrasena(List<String> arrFinal) {
+        String respuesta="";
+        if (contraseñas.isEmpty()) {
+            contraseñas = (ArrayList<String>) this.getPaswword(arrFinal);
+            if (contraseñas.size() > 0) {
+                System.out.println("lista de contraseñas : " + contraseñas.toString());
+                respuesta = contraseñas.get(0);
+                contraseñas.remove(0);
+            }
+
+        } else {
+            respuesta = contraseñas.get(0);
+            contraseñas.remove(0);
+        }
+
+        return respuesta;
+    }
 
     /**
      * Funcion que genera las contraseñas: La contraseña, que se deben guiar por
@@ -54,6 +79,7 @@ public class OperateDictionarieStub implements OperateDictionarie {
      * se desecha. En caso de no haber letras de ayuda "arreglo de ayuda", se
      * ignora el hecho y se continua con la frase. En este caso la contraseña
      * debe mantener 3 palabras
+     *
      * @param arregloFinal
      * @return contraseñas
      */
@@ -107,7 +133,9 @@ public class OperateDictionarieStub implements OperateDictionarie {
                             int k = (int) (Math.random() * letraEmergencia.size());
                             contraseña = contraseña.concat(String.valueOf(k));
                             temp.remove(0);
-                        }}}
+                        }
+                    }
+                }
                 if (p < temp.size()) {
                     if (!isNumeric(temp.get(p)) & letra.equals("L")) {
                         try {//Para saber si es letra
@@ -140,7 +168,8 @@ public class OperateDictionarieStub implements OperateDictionarie {
                 } else {
                     p++;
                     pp++;
-                }}
+                }
+            }
             contraseñas.add(contraseña);
         }
         return contraseñas;
@@ -148,8 +177,9 @@ public class OperateDictionarieStub implements OperateDictionarie {
 
     /**
      * Esta funcion genera el arreglo ayuda.
-     * @param arregloA  Arreglo que contiene todos los carrecteres 
-     * que serviran de ayuda.
+     *
+     * @param arregloA Arreglo que contiene todos los carrecteres que serviran
+     * de ayuda.
      */
     @Override
     public void getListHelp(List<String> arregloA) {
@@ -157,10 +187,13 @@ public class OperateDictionarieStub implements OperateDictionarie {
             String ft = arregloA.get(ae);
             for (int y = 0; y < ft.length(); y++) {
                 arregloAyuda.add(String.valueOf(ft.charAt(y)));
-            }}}
+            }
+        }
+    }
 
     /**
-     *  Esta funcion convierte la frase del arreglo a lista.
+     * Esta funcion convierte la frase del arreglo a lista.
+     *
      * @param arregloIn Arreglo con la frase completa.
      * @return arregloOut
      */
@@ -178,8 +211,9 @@ public class OperateDictionarieStub implements OperateDictionarie {
     }
 
     /**
-     *  Esta funcion regresa si el string es o no numero.
-     * @param cadena   String representa un caracter numero o letra.
+     * Esta funcion regresa si el string es o no numero.
+     *
+     * @param cadena String representa un caracter numero o letra.
      */
     private static boolean isNumeric(String cadena) {
         try {
@@ -189,8 +223,13 @@ public class OperateDictionarieStub implements OperateDictionarie {
             return false;
         }
     }
+
     static {
-        letraEmergencia.add("A");letraEmergencia.add("B");letraEmergencia.add("C");
-        letraEmergencia.add("D");letraEmergencia.add("E");letraEmergencia.add("F");
+        letraEmergencia.add("A");
+        letraEmergencia.add("B");
+        letraEmergencia.add("C");
+        letraEmergencia.add("D");
+        letraEmergencia.add("E");
+        letraEmergencia.add("F");
     }
 }

@@ -23,4 +23,6 @@ public interface OperateDictionarie {
     
     public List<String> getArregloAyuda();
     
+    public String getContrasena(List<String> arregloFinal);
+    
 }
