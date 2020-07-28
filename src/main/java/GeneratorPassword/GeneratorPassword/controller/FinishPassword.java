@@ -5,6 +5,8 @@
  */
 package GeneratorPassword.GeneratorPassword.controller;
 
+
+import GeneratorPassword.GeneratorPassword.persistence.MongoDB;
 import GeneratorPassword.GeneratorPassword.services.CreatePaswword;
 import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
 import GeneratorPassword.GeneratorPassword.services.OpeprateNumerate;
@@ -45,6 +47,10 @@ public class FinishPassword {
     @Autowired
     private CreatePaswword crp;
 
+    @Autowired
+    private MongoDB mng;
+
+    
     private ArrayList<String> contraseñas = new ArrayList<String>();  
 
     /**
@@ -120,10 +126,13 @@ public class FinishPassword {
         String contraseña;
         List<String> as = crp.getArregloAyuda();
         od.getListHelp(as);
+       
         contraseña=od.getContrasena(crp.getArregloFinal());
+        
+         mng.insertData(contraseña);
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
         }catch (Exception ex){
-            throw new Exception();               
+            throw new PasswordException("Que paso aqui : "+ex.getMessage());               
         }
     }
 
