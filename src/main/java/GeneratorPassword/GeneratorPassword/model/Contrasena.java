@@ -35,15 +35,6 @@ public class Contrasena {
         this.contrasena = contrasena;
     }
 
-//    public String getContrasena() {
-//        return contrasena;
-//    }
-//
-//    public void setContrasena(String contrasena) {
-//        this.contrasena = contrasena;
-//    }
-
-
     public String Hash(String contrasena) throws NoSuchAlgorithmException{
         byte[] bytesDelMensaje = contrasena.getBytes();
         MessageDigest resumenDelMensaje = MessageDigest.getInstance("MD5");
@@ -57,7 +48,7 @@ public class Contrasena {
     @Override
     public String toString() {
         return String.format(
-                "Contrasena[contrasena=%s]",
+                //"[contrasena=%s]",
                 contrasena);
     }
 
