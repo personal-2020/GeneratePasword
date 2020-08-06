@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface CreatePaswword {
     
-    public List<String> paswords(List<String> frase);
-    public List<String> getArregloAyuda();
-    public List<String> getArregloFinal();
+    public List<String> paswords(List<String> frase)throws PasswordException, Exception ;
+    public List<String> getArregloAyuda()throws PasswordException, Exception ;
+    public List<String> getArregloFinal()throws PasswordException, Exception ;
     
 }

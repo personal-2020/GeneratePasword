@@ -13,16 +13,16 @@ import java.util.List;
  */
 public interface OperateDictionarie {
             
-    public List<String> getPaswword(List<String> arregloFinal);
+    public List<String> getPaswword(List<String> arregloFinal) throws PasswordException;
     
-    public void getListHelp(List<String> arregloAyuda);
+    public void getListHelp(List<String> arregloAyuda) throws PasswordException;
     
-    public List<List<String>> conversFraseToArray(List<String> arregloIn);
+    public List<List<String>> conversFraseToArray(List<String> arregloIn) throws PasswordException;
     
-    public void setArregloAyuda(List<String> arregloAyudav);
+    public void setArregloAyuda(List<String> arregloAyudav) throws PasswordException;
     
-    public List<String> getArregloAyuda();
+    public List<String> getArregloAyuda() throws PasswordException;
     
-    public String getContrasena(List<String> arregloFinal);
+    public String getContrasena(List<String> arregloFinal) throws PasswordException;
     
 }

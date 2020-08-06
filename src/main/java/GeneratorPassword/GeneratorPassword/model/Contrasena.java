@@ -43,8 +43,7 @@ public class Contrasena {
         String resumen = resumenNumero.toString(16);
         return resumen;
     }
-    
-    
+        
     @Override
     public String toString() {
         return String.format(

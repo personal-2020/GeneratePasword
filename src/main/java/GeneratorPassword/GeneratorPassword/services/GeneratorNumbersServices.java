@@ -15,11 +15,11 @@ import java.util.List;
 
 public interface GeneratorNumbersServices {
     
-    public List<String> getNumberConvertido();
-    public void conversNumb(List<BigInteger> numero);
-    public String conversNumbers(BigInteger numero, Integer base);
-    public void gellAllNum(String numero) ;
-    public List<BigInteger> getNumeros();
-    public void resetNumeros();
+    public List<String> getNumberConvertido()throws PasswordException, Exception ;
+    public void conversNumb(List<BigInteger> numero)throws PasswordException, Exception ;
+    public String conversNumbers(BigInteger numero, Integer base)throws PasswordException, Exception ;
+    public void gellAllNum(String numero)throws PasswordException, Exception  ;
+    public List<BigInteger> getNumeros()throws PasswordException, Exception ;
+    public void resetNumeros()throws PasswordException, Exception ;
 
 }

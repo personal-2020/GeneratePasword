@@ -24,7 +24,7 @@ public class CreatePaswordStub implements CreatePaswword{
      * @return arregloAyuda
      */
     @Override
-    public List<String> getArregloAyuda(){
+    public List<String> getArregloAyuda()throws PasswordException, Exception {
         return arregloAyuda;
     }
     
@@ -33,7 +33,7 @@ public class CreatePaswordStub implements CreatePaswword{
      * @return arregloFinal
      */
     @Override
-    public List<String> getArregloFinal(){
+    public List<String> getArregloFinal()throws PasswordException, Exception {
         return arregloFinal;
     }   
     
@@ -53,7 +53,8 @@ public class CreatePaswordStub implements CreatePaswword{
     * @return   arregloFinal   
      */
     @Override
-    public List<String> paswords(List<String> frase) {//Analizando si se debe agergar al vector ayuda....
+    public List<String> paswords(List<String> frase) throws PasswordException, Exception {//Analizando si se debe agergar al vector ayuda....
+        try{
         for(int i =0; i<frase.size();i++){
             int nn=0;
             int nl=0;
@@ -72,6 +73,10 @@ public class CreatePaswordStub implements CreatePaswword{
             }                         
         }                             
         return arregloFinal;       
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion entregando Lista Contraseñas: " + ex.getMessage());
+        }
+       
     }
     
     /**

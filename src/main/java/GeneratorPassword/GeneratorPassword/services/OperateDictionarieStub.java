@@ -52,8 +52,9 @@ public class OperateDictionarieStub implements OperateDictionarie {
      * @return  respuesta
      */
 
-    public String getContrasena(List<String> arrFinal) {
+    public String getContrasena(List<String> arrFinal) throws PasswordException {
         String respuesta="";
+        try{
         if (contraseñas.isEmpty()) {
             contraseñas = (ArrayList<String>) this.getPaswword(arrFinal);
             if (contraseñas.size() > 0) {
@@ -68,6 +69,9 @@ public class OperateDictionarieStub implements OperateDictionarie {
         }
 
         return respuesta;
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion entregando Contraseña: " + ex.getMessage());
+        }
     }
 
     /**
@@ -84,95 +88,99 @@ public class OperateDictionarieStub implements OperateDictionarie {
      * @return contraseñas
      */
     @Override
-    public List<String> getPaswword(List<String> arregloFinal) {
+    public List<String> getPaswword(List<String> arregloFinal) throws PasswordException{
         List<List<String>> arreglosf = conversFraseToArray(arregloFinal);
         String letra = "L";
-        for (int ft = 0; ft < arreglosf.size(); ft++) {
-            String contraseña = "";
-            List<String> temp = arreglosf.get(ft);
-            boolean paso = false;
-            int si = 0;
-            int p = 0;
-            int pp = 0;
-            while (temp.size() > 0) {
-                if (p >= temp.size()) {
-                    p = 0;
-                    si++;
-                }
-                if (si > 0) {//AQUI SE BUSA LA LETRA O NUMERO Q SE NECESITA
-                    boolean noesta = true;
-                    si = 0;
-                    for (int g = 0; g < arregloAyuda.size(); g++) {
-                        String qqq = arregloAyuda.get(g);
-                        if (!isNumeric(qqq) && letra.equals("L") && noesta) {
-                            try {
-                                String a = dictionario.getLetra(qqq);
+        try{
+            for (int ft = 0; ft < arreglosf.size(); ft++) {
+                String contraseña = "";
+                List<String> temp = arreglosf.get(ft);
+                boolean paso = false;
+                int si = 0;
+                int p = 0;
+                int pp = 0;
+                while (temp.size() > 0) {
+                    if (p >= temp.size()) {
+                        p = 0;
+                        si++;
+                    }
+                    if (si > 0) {//AQUI SE BUSA LA LETRA O NUMERO Q SE NECESITA
+                        boolean noesta = true;
+                        si = 0;
+                        for (int g = 0; g < arregloAyuda.size(); g++) {
+                            String qqq = arregloAyuda.get(g);
+                            if (!isNumeric(qqq) && letra.equals("L") && noesta) {
+                                try {
+                                    String a = dictionario.getLetra(qqq);
+                                    arregloAyuda.remove(g);
+                                    letra = "N";
+                                    contraseña = contraseña.concat(a);
+                                    noesta = false;
+                                } catch (PasswordException ex) {
+                                    Logger.getLogger(OperateDictionarieStub.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } else if (isNumeric(qqq) && letra.equals("N") && noesta) {
                                 arregloAyuda.remove(g);
-                                letra = "N";
-                                contraseña = contraseña.concat(a);
+                                letra = "L";
+                                contraseña = contraseña.concat(qqq);
                                 noesta = false;
+                            }
+                        }
+                        if (!noesta || pp >= 2) {
+                            pp = 0;
+                            if (letra.equals("L")) {
+                                int k = (int) (Math.random() * letraEmergencia.size());
+                                String h = letraEmergencia.get(k);
+                                letra = "N";
+                                contraseña = contraseña.concat(h);
+                                temp.remove(0);
+                            } else if (letra.equals("N")) {
+                                int k = (int) (Math.random() * letraEmergencia.size());
+                                contraseña = contraseña.concat(String.valueOf(k));
+                                temp.remove(0);
+                            }
+                        }
+                    }
+                    if (p < temp.size()) {
+                        if (!isNumeric(temp.get(p)) & letra.equals("L")) {
+                            try {//Para saber si es letra
+                                String a = dictionario.getLetra(temp.get(p));
+                                contraseña = contraseña.concat(a);
+                                letra = "N";
+                                temp.remove(p);
+                                if (p > 0) {
+                                    p--;
+                                }
+                                paso = true;
                             } catch (PasswordException ex) {
                                 Logger.getLogger(OperateDictionarieStub.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                        } else if (isNumeric(qqq) && letra.equals("N") && noesta) {
-                            arregloAyuda.remove(g);
+                        } else if (isNumeric(temp.get(p)) & letra.equals("N")) {
                             letra = "L";
-                            contraseña = contraseña.concat(qqq);
-                            noesta = false;
-                        }
-                    }
-                    if (!noesta || pp >= 2) {
-                        pp = 0;
-                        if (letra.equals("L")) {
-                            int k = (int) (Math.random() * letraEmergencia.size());
-                            String h = letraEmergencia.get(k);
-                            letra = "N";
-                            contraseña = contraseña.concat(h);
-                            temp.remove(0);
-                        } else if (letra.equals("N")) {
-                            int k = (int) (Math.random() * letraEmergencia.size());
-                            contraseña = contraseña.concat(String.valueOf(k));
-                            temp.remove(0);
-                        }
-                    }
-                }
-                if (p < temp.size()) {
-                    if (!isNumeric(temp.get(p)) & letra.equals("L")) {
-                        try {//Para saber si es letra
-                            String a = dictionario.getLetra(temp.get(p));
-                            contraseña = contraseña.concat(a);
-                            letra = "N";
+                            contraseña = contraseña.concat(temp.get(p));
                             temp.remove(p);
                             if (p > 0) {
                                 p--;
                             }
                             paso = true;
-                        } catch (PasswordException ex) {
-                            Logger.getLogger(OperateDictionarieStub.class.getName()).log(Level.SEVERE, null, ex);
+                        } else {
+                            paso = false;
+                            p++;
+                            pp++;
                         }
-                    } else if (isNumeric(temp.get(p)) & letra.equals("N")) {
-                        letra = "L";
-                        contraseña = contraseña.concat(temp.get(p));
-                        temp.remove(p);
-                        if (p > 0) {
-                            p--;
-                        }
-                        paso = true;
+                    } else if (p > temp.size()) {
+                        p = 0;
                     } else {
-                        paso = false;
                         p++;
                         pp++;
                     }
-                } else if (p > temp.size()) {
-                    p = 0;
-                } else {
-                    p++;
-                    pp++;
                 }
+                contraseñas.add(contraseña);
             }
-            contraseñas.add(contraseña);
+            return contraseñas;
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion Generando Contraseña: " + ex.getMessage());
         }
-        return contraseñas;
     }
 
     /**
@@ -198,16 +206,20 @@ public class OperateDictionarieStub implements OperateDictionarie {
      * @return arregloOut
      */
     @Override
-    public List<List<String>> conversFraseToArray(List<String> arregloIn) {
+    public List<List<String>> conversFraseToArray(List<String> arregloIn)throws PasswordException {
         List<List<String>> arregloOut = new ArrayList<List<String>>();
-        for (String i : arregloIn) {
-            List<String> temp = new ArrayList<String>();
-            for (int y = 0; y < i.length(); y++) {
-                temp.add(String.valueOf(i.charAt(y)));
+        try{
+            for (String i : arregloIn) {
+                List<String> temp = new ArrayList<String>();
+                for (int y = 0; y < i.length(); y++) {
+                    temp.add(String.valueOf(i.charAt(y)));
+                }
+                arregloOut.add(temp);
             }
-            arregloOut.add(temp);
+            return arregloOut;
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion convirtiendo Frase: " + ex.getMessage());
         }
-        return arregloOut;
     }
 
     /**

@@ -6,6 +6,7 @@
 package GeneratorPassword.GeneratorPassword.persistence;
 
 import GeneratorPassword.GeneratorPassword.model.Contrasena;
+import GeneratorPassword.GeneratorPassword.services.PasswordException;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -31,10 +32,15 @@ public class MongoDB {
 
     private MongoClientURI uri = new MongoClientURI("mongodb://passgenerator:Examinador4butaca5Afirmar1@ds239692.mlab.com:39692/generatorpassword?retryWrites=false");
 
-    public boolean isHereOrNot(String hash) {
+    /**
+     * Esta funcion retorna True o False si encuentra un hash igual.
+     * @param hash  String que se pasa por parametro.
+     * @return  respesuta   Valor booleano que representa si fue encontrado o no el hash en la base de datos.
+     * @throws PasswordException 
+     */
+    public boolean isHereOrNot(String hash) throws PasswordException {
         boolean respuesta = false;
-        MongoClient client = new MongoClient(uri);
-        //MongoDatabase db = client.getDatabase(uri.getDatabase());
+        MongoClient client = new MongoClient(uri);        
         DB db = client.getDB(uri.getDatabase());
         DBCollection collection =  db.getCollection("contrasenah");
         DBObject query = new BasicDBObject("contrasena", new BasicDBObject("$regex", hash));
@@ -42,15 +48,18 @@ public class MongoDB {
         try {
             if (cursor.hasNext()) {
                 respuesta=true;    
-                System.out.println("PUTA :"+ cursor.next().get("contrasena"));                
+                //System.out.println("PUTA :"+ cursor.next().get("contrasena"));                
             }
-        } finally {
+        }catch (Exception ex){
+            throw new PasswordException("Excepcion MongoBD Consulta : "+ex.getMessage());               
+        }finally {
             cursor.close();
-        }        
+        }
         return respuesta;
     }
 
-    public void findAndPrintData() {
+    public void findAndPrintData()throws PasswordException  {
+        try{
         MongoClient client = new MongoClient(uri);
         MongoDatabase db = client.getDatabase(uri.getDatabase());
         MongoCollection<Document> coll = db.getCollection("contrasenah");
@@ -67,15 +76,22 @@ public class MongoDB {
             }
         }
         client.close();
+        }catch (Exception ex){
+            throw new PasswordException("Excepcion MongoBD Consulta : "+ex.getMessage());               
+        }
     }
 
-    public void insertData(String contrasena) {
+    public void insertData(String contrasena) throws PasswordException {
+        try{
         MongoClient client = new MongoClient(uri);
         MongoDatabase db = client.getDatabase(uri.getDatabase());
         MongoCollection<Document> coll = db.getCollection("contrasenah");
         Document master = Document.parse("{contrasena:'" + contrasena + "'}");
         coll.insertOne(master);
         client.close();
+        }catch (Exception ex){
+            throw new PasswordException("Excepcion Insersion datos MongoBD : "+ex.getMessage());               
+        }     
     }
 
 }

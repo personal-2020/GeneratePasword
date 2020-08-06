@@ -35,7 +35,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * @param numero String que representa el numero inicial de 20 cifras.
      */
     @Override
-    public void gellAllNum(String numero) {
+    public void gellAllNum(String numero) throws PasswordException, Exception {
+        try{
         int num = 0;
         int a = 0;
         int b = 5;
@@ -44,13 +45,18 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             a = b;
             b = b + 5;
             num++;}
+    }catch (Exception ex) {
+            throw new PasswordException("Excepcion Generando numeros: " + ex.getMessage());
+        }
+        
+        
     }
 
     /**
      * Estableve el numero converitdo
      * @param numerosConvertidos Variable de los numeros convertidos.
      */
-    public void setNumverCovertido(List<String> numerosConvertidos){
+    public void setNumverCovertido(List<String> numerosConvertidos)throws PasswordException, Exception {
         this.numerosConvertidos=numerosConvertidos;    
     }
     
@@ -59,7 +65,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * @return numerosConvertidos
      */
     @Override
-    public List<String> getNumberConvertido(){
+    public List<String> getNumberConvertido()throws PasswordException, Exception {
         return numerosConvertidos;
     }
     
@@ -68,7 +74,7 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * @return numeros Lista de numeros de tipo BigInteger.
      */
     @Override
-    public List<BigInteger> getNumeros() {
+    public List<BigInteger> getNumeros()throws PasswordException, Exception  {
         return numeros;
     }
     
@@ -80,7 +86,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * return res  string que contiene el numero convertido
      */
     @Override
-    public String conversNumbers(BigInteger numero, Integer base) {
+    public String conversNumbers(BigInteger numero, Integer base) throws PasswordException, Exception {
+        try{
         List<String> prueba1 = new ArrayList<>();
         List<String> prueba2 = new ArrayList<>();
         String prueba = "";
@@ -110,6 +117,10 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             res = res.concat(d);
         }
         return res;
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion Convirtierndo numeros: " + ex.getMessage());
+        }
+        
     }
     
     /**
@@ -117,7 +128,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * @param numero Lista de numeros tipo String.
      * @return respuesta
      */
-    public List<String> getNumInCorrectBase(List<String> numero) {
+    public List<String> getNumInCorrectBase(List<String> numero) throws PasswordException, Exception {
+        try{
         List<String> respuesta = new ArrayList<String>();
         for (int i = 0; i < numero.size(); i++) {
             Integer temporal= Integer.valueOf(numero.get(i));
@@ -145,6 +157,9 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             }
         }
         return respuesta;        
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion Base Correcta: " + ex.getMessage());
+        }
     }
 
     /**
@@ -153,7 +168,8 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
      * los numeros convertidos.
      */
     @Override
-    public void conversNumb(List<BigInteger> numero) {
+    public void conversNumb(List<BigInteger> numero) throws PasswordException, Exception {
+        try{
         int base=2;
         for (int i = 0; i < numeros.size(); i++) {
             BigInteger temp = numeros.get(i);
@@ -175,13 +191,16 @@ public class GeneratorNumbersStub implements GeneratorNumbersServices {
             base = 2;
             base = base * 2;
         }
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion Convirtiendo numeros: " + ex.getMessage());
+        }
     }
     
     /**
      * Funcion que limpia la lista de numeros
      */
     @Override
-    public void resetNumeros(){
+    public void resetNumeros()throws PasswordException, Exception {
         numeros.clear();
     }
         

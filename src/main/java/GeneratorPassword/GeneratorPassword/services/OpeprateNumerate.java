@@ -14,14 +14,14 @@ import java.util.List;
 public interface OpeprateNumerate {
     
     
-    public List<String> getSentenceOperateNumerate();
+    public List<String> getSentenceOperateNumerate() throws PasswordException;
 //    public void SeparateNumber(List<String> frase);
-    public void SeparateNumber(String frase);
-    public void SeparateNumber(List<String> frase);
-    public List<List<String>> getListL();
-    public void clearSentences();
-    public void clearSentence();
-    public List<String> getSentence();
-    public List<String> getFinalFrase(List<String> frase);        
+    public void SeparateNumber(String frase) throws PasswordException;
+    public void SeparateNumber(List<String> frase) throws PasswordException;
+    public List<List<String>> getListL() throws PasswordException;
+    public void clearSentences() throws PasswordException;
+    public void clearSentence() throws PasswordException;
+    public List<String> getSentence() throws PasswordException;
+    public List<String> getFinalFrase(List<String> frase) throws PasswordException;       
     
 }

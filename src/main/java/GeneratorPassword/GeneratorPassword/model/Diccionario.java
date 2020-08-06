@@ -52,7 +52,7 @@ public class Diccionario {
         if(map.containsKey(letra)){                        
              return map.get(letra);       
         }else{            
-            throw  new PasswordException("NO se encuentra esa letra");                    
+            throw  new PasswordException("NO se encuentra esa letra en el diccionario");                    
         }
     }
     
@@ -61,7 +61,8 @@ public class Diccionario {
      * @param Letra Objeto tipo String que representa la letra a escoger
      * @throws PasswordException 
      */
-    public String getLetra(String Letra) throws PasswordException{        
+    public String getLetra(String Letra) throws PasswordException{
+    try{
         List<Tupla> palabras=getListOfLetter(Letra);
         int numero= (int) (Math.random() * palabras.size());
         Tupla t=palabras.get(numero);
@@ -69,13 +70,17 @@ public class Diccionario {
         palabras.set(numero,t);
         rechangeinMap(Letra, palabras);
         return (String)t.getElem1();
+    }catch (Exception ex) {
+            throw new PasswordException("Excepcion Obteniedo letra " + ex.getMessage());
+        }
     }    
     
     /**
      * Disminuye el nivel de las palabras con nivel alto.
      * @param Letra La letra que indicara la lista a reducir los niveles.
      */
-    public void downLevel(String Letra){        
+    public void downLevel(String Letra)throws PasswordException{ 
+        try{
         Map<String, List<Tupla>> temp= new HashMap<String, List<Tupla>>();
         Iterator it = map.keySet().iterator();        
         while(it.hasNext()){            
@@ -91,7 +96,10 @@ public class Diccionario {
             }          
             temp.put(key, te);          
         }
-        setMap(temp);        
+        setMap(temp);   
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion disminuyendo letra de rango: " + ex.getMessage());
+        }
     }  
     
     /**

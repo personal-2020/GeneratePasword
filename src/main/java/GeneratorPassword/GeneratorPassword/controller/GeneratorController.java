@@ -42,25 +42,36 @@ public class GeneratorController {
      * Esta funcion representa la forma grafica de la matriz.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pintar")
-    public ResponseEntity<?> pintarMa() {
+    public ResponseEntity<?> pintarMa()  throws PasswordException{
+        try{
         return new ResponseEntity<>(pd.paintMatrs(), HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion pintnado: " + ex.getMessage());
+        }
     }
 
     /**
      * Esta funcion genea un numero aleatorio.
      */    
     @RequestMapping(method = RequestMethod.GET, path = "/r")
-    public ResponseEntity<?> getRandom() {
+    public ResponseEntity<?> getRandom()  throws PasswordException{
+        try{
         return new ResponseEntity<>(pd.getNumRandom(), HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion generando numro aleatorio: " + ex.getMessage());
+        }    
     }
-
     
     /**
      * Esta funcion trae una nueva posicion de la matriz
      */
     @RequestMapping(method = RequestMethod.GET, path = "/pos")
-    public ResponseEntity<?> getPos() {                
+    public ResponseEntity<?> getPos()  throws PasswordException{            
+        try{
         return new ResponseEntity<>(pd.getNewPosition(), HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion dando una posicion nueva de la matriz: " + ex.getMessage());
+        }    
     }    
     
     /**
@@ -69,16 +80,24 @@ public class GeneratorController {
      * @param id2    Es un entero que representa la fila de la matriz.    
      */
     @RequestMapping(method = RequestMethod.GET, path = "/es/{id1}/{id2}")
-    public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) {        
+    public ResponseEntity<?> getTRue(@PathVariable Integer id1,@PathVariable Integer id2) throws PasswordException {        
+        try{
         return new ResponseEntity<>(pd.esta(new Tupla(id1,id2)), HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion retornando el valor de una posicion visitada de la matriz: " + ex.getMessage());
+        }
     }
     
     /**
      * Este metodo informa las posiciones libres que quedan en la matriz.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/vi")
-    public ResponseEntity<?> vi() {
+    public ResponseEntity<?> vi()  throws PasswordException{
+        try{
         return new ResponseEntity<>(pd.getVisitados(), HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion de posiciones libres: " + ex.getMessage());
+        }
     }       
     
     /**
@@ -86,6 +105,7 @@ public class GeneratorController {
      */
     @RequestMapping(method = RequestMethod.GET, path = "/gnum")//Este es---
     public ResponseEntity<?> allNUm() throws PasswordException {
+        try{
         pd.generateNewMatriz();
         pd.GenerateRandom();       
         numero=pd.numberOfMatriz();    
@@ -94,6 +114,9 @@ public class GeneratorController {
             throw new PasswordException("Matriz sin llenar, rellenela antes de solicitar el numero.");
         }        
         return new ResponseEntity<>(numero, HttpStatus.ACCEPTED);
+        }catch (Exception ex) {
+            throw new PasswordException("Excepcion generando numero de 20 cifras: " + ex.getMessage());
+        }
     }           
     
 }
