@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MongoDB {
 
-    private MongoClientURI uri = new MongoClientURI("mongodb://passgenerator:Examinador4butaca5Afirmar1@ds239692.mlab.com:39692/generatorpassword?retryWrites=false");
+    private MongoClientURI uri = new MongoClientURI("mongodb+srv://cartm:decena9Ajustar8Dalí2@cluster0.gwdk1.mongodb.net/DB_Contrasenas?retryWrites=true&w=majority");
 
     /**
      * Esta funcion retorna True o False si encuentra un hash igual.
@@ -42,13 +42,12 @@ public class MongoDB {
         boolean respuesta = false;
         MongoClient client = new MongoClient(uri);        
         DB db = client.getDB(uri.getDatabase());
-        DBCollection collection =  db.getCollection("contrasenah");
-        DBObject query = new BasicDBObject("contrasena", new BasicDBObject("$regex", hash));
+        DBCollection collection =  db.getCollection("Contrasenas");        
+        DBObject query = new BasicDBObject("Contrasenas", new BasicDBObject("$regex", hash));
         DBCursor cursor = collection.find(query);        
         try {
             if (cursor.hasNext()) {
                 respuesta=true;    
-                //System.out.println("PUTA :"+ cursor.next().get("contrasena"));                
             }
         }catch (Exception ex){
             throw new PasswordException("Excepcion MongoBD Consulta : "+ex.getMessage());               
@@ -62,15 +61,14 @@ public class MongoDB {
         try{
         MongoClient client = new MongoClient(uri);
         MongoDatabase db = client.getDatabase(uri.getDatabase());
-        MongoCollection<Document> coll = db.getCollection("contrasenah");
+        MongoCollection<Document> coll = db.getCollection("Contrasenas");
         BasicDBObject dbo = new BasicDBObject();
         FindIterable<Document> res = coll.find(dbo);
         MongoCursor<Document> docit = res.iterator();
         while (docit.hasNext()) {
             Document doc = docit.next();
-            //contrasenasHash.add(new Contras();
-            System.out.println("miremos : " + (String) doc.get("contrasena"));
-            String g = (String) doc.get("contrasena");
+            System.out.println("miremos : " + (String) doc.get("Contrasenas"));
+            String g = (String) doc.get("ContrasenaS");
             if (g.equals("4a7b98d24d5a3b17017d765680b88aa6")) {
                 System.out.println("si es igual");
             }
@@ -85,7 +83,7 @@ public class MongoDB {
         try{
         MongoClient client = new MongoClient(uri);
         MongoDatabase db = client.getDatabase(uri.getDatabase());
-        MongoCollection<Document> coll = db.getCollection("contrasenah");
+        MongoCollection<Document> coll = db.getCollection("Contrasenas");
         Document master = Document.parse("{contrasena:'" + contrasena + "'}");
         coll.insertOne(master);
         client.close();
