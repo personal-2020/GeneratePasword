@@ -47,8 +47,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
      */
     @Override
     public void generateNewMatriz(){
-        Tupla posInit = new Tupla((int) (Math.random() * 3), (int) (Math.random() * 4));
-        System.out.println("que posiciones miramos: El1: "+posInit.getElem1()+"--ELEMENTO 2: "+posInit.getElem2());
+        Tupla posInit = new Tupla((int) (Math.random() * 3), (int) (Math.random() * 4));//System.out.println("que posiciones miramos: El1: "+posInit.getElem1()+"--ELEMENTO 2: "+posInit.getElem2());
         ma = new Matriz(4, 5, posInit);
     }
     
