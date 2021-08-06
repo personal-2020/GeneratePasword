@@ -88,7 +88,9 @@ public class FinishPassword {
      */
     @RequestMapping(method = RequestMethod.GET, path = "/gtn")
     public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
+        Contrasena contrasenas;
         try {////Primer paso generar el numero cada vez que entra
+            
             String contraseña = "";
             boolean temporal = true;
             while (temporal) {
@@ -153,7 +155,8 @@ public class FinishPassword {
                     temporal = false;
                 }
             }
-            return new ResponseEntity<>(contraseña.toString(), HttpStatus.ACCEPTED);
+            contrasenas=new Contrasena(contraseña, 0);
+            return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }

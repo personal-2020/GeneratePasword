@@ -24,9 +24,12 @@ public class Contrasena {
     public Contrasena() {
     }
     public Contrasena( String contrasena) throws NoSuchAlgorithmException {
-        this.contrasena = Hash(contrasena);
-        
+        this.contrasena = Hash(contrasena);        
     }
+    public Contrasena( String contrasena, int numero){
+        this.contrasena = contrasena;        
+    }
+
     public String getHash() {
         return contrasena;
     }
