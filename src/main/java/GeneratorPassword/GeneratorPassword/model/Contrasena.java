@@ -31,6 +31,14 @@ public class Contrasena {
         return contrasena;
     }
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
     public void setHash(String contrasena) {
         this.contrasena = contrasena;
     }
@@ -46,9 +54,9 @@ public class Contrasena {
         
     @Override
     public String toString() {
-        return String.format(
-                //"[contrasena=%s]",
-                contrasena);
+        final StringBuilder sb = new StringBuilder("contrasena{");
+        sb.append("contrasena=").append(getContrasena());        
+        sb.append('}');
+        return sb.toString();
     }
-
 }
