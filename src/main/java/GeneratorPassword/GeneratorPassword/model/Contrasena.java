@@ -51,12 +51,9 @@ public class Contrasena {
         String resumen = resumenNumero.toString(16);
         return resumen;
     }
-        
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("contrasena{");
-        sb.append("contrasena=").append(getContrasena());        
-        sb.append('}');
-        return sb.toString();
+        return "Contrasena{" + "con=" + getContrasena() + '}';
     }
+    
 }

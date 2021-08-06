@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  */
 @RestController
 @RequestMapping(value = "/getPassword")
-//@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class FinishPassword {
 
     @Autowired
@@ -153,7 +153,7 @@ public class FinishPassword {
                     temporal = false;
                 }
             }
-            return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(contraseña.toString(), HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
