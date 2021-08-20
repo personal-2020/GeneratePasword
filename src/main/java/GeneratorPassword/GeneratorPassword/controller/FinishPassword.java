@@ -162,7 +162,7 @@ public class FinishPassword {
             }
             contrasenas=new Contrasena(contraseña, 0);
             //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
-            return contrasenas;
+            return new Contrasena(contrasenas.getContrasena(),0);
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
