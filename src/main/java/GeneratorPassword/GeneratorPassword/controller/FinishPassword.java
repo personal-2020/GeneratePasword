@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 /**
  *
  * @author cefar-dico
@@ -86,8 +87,11 @@ public class FinishPassword {
      * @throws PasswordException
      * @throws Exception
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/gtn")
-    public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
+    //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/gtn")
+    //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
+    public Contrasena getPasswordNew() throws PasswordException, Exception {
         Contrasena contrasenas;
         try {////Primer paso generar el numero cada vez que entra
             
@@ -156,7 +160,8 @@ public class FinishPassword {
                 }
             }
             contrasenas=new Contrasena(contraseña, 0);
-            return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
+            //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
+            return contrasenas;
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
