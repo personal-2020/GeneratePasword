@@ -56,7 +56,7 @@ public class Contrasena {
     }
     @Override
     public String toString() {
-        return "Contrasena{" + "con=" + getContrasena() + '}';
+        return "Contrasena{" + "con=" + getContrasena() + "}";
     }
     
 }

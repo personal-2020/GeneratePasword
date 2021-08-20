@@ -155,6 +155,7 @@ public class FinishPassword {
                 }
                 //8Paso, entrega de contraseña
                 Contrasena cn = new Contrasena(contraseña);
+                
                 if (!mng.isHereOrNot(cn.toString())) {
                     mng.insertData(new Contrasena(contraseña).toString());
                     temporal = false;
