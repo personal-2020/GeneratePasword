@@ -89,7 +89,7 @@ public class FinishPassword {
      * @throws Exception
      */
     //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200/#/generador")
     @GetMapping("/getPassword/gtn")
     //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
     public Contrasena getPasswordNew() throws PasswordException, Exception {
