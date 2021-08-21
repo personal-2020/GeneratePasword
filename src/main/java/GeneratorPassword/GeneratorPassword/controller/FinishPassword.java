@@ -32,8 +32,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author cefar-dico
  */
 @RestController
-//@RequestMapping(value = "/getPassword")
-//@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@RequestMapping(value = "/getPassword")
+@CrossOrigin(origins = "localhost:4200", methods= {RequestMethod.GET,RequestMethod.POST})
 public class FinishPassword {
 
     @Autowired
@@ -59,8 +59,8 @@ public class FinishPassword {
     /**
      * Esta funcion genera la contraseña final.
      */
-    //@RequestMapping(method = RequestMethod.GET, path = "/gt")
-    @GetMapping("/getPassword/gt")
+    @RequestMapping(method = RequestMethod.GET, path = "/gt")
+    //@GetMapping("/getPassword/gt")
     public ResponseEntity<?> getPassword() throws PasswordException {
         String contraseña = "";
         try {
@@ -90,9 +90,9 @@ public class FinishPassword {
      * @throws PasswordException
      * @throws Exception
      */
-    //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
+    @RequestMapping(method = RequestMethod.GET, path = "/gtn")
     //@CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/getPassword/gtn")
+    //@GetMapping("/getPassword/gtn")
     //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
     public Contrasena getPasswordNew() throws PasswordException, Exception {
         Contrasena contrasenas;
