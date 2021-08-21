@@ -82,6 +82,13 @@ public class FinishPassword {
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/con")
+    public Contrasena con(@RequestParam(required = false, defaultValue = "World") String name) {
+        System.out.println("==== get greeting ====");
+        return new Contrasena("lola", 0);
+    }
+
     /**
      * Esta funcion retorna de manera rapida una contraseña y la coteja con la
      * base de datos para ver si ya fue generada antes.
