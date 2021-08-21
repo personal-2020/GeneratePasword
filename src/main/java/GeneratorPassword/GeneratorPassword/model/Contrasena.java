@@ -17,29 +17,18 @@ import org.springframework.data.annotation.Id;
  */
 public class Contrasena {
   
-    //@Id
+    @Id
     private String contrasena;
     
 
     public Contrasena() {
     }
     public Contrasena( String contrasena) throws NoSuchAlgorithmException {
-        this.contrasena = Hash(contrasena);        
+        this.contrasena = Hash(contrasena);
+        
     }
-    public Contrasena( String contrasena, int numero){
-        this.contrasena = contrasena;        
-    }
-
     public String getHash() {
         return contrasena;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
     }
 
     public void setHash(String contrasena) {
@@ -54,9 +43,12 @@ public class Contrasena {
         String resumen = resumenNumero.toString(16);
         return resumen;
     }
+        
     @Override
     public String toString() {
-        return "Contrasena{" + "con=" + getContrasena() + "}";
+        return String.format(
+                //"[contrasena=%s]",
+                contrasena);
     }
-    
+
 }

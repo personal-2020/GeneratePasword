@@ -25,6 +25,4 @@ public interface OperateDictionarie {
     
     public String getContrasena(List<String> arregloFinal) throws PasswordException;
     
-    public Boolean getSizeListContrasen() throws PasswordException;
-    
 }
