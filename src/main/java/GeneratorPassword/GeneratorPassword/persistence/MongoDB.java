@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  *
  * @author DicoAdmin
  */
-@Service
+//@Service
 public class MongoDB {
 
 //    private MongoClientURI uri = new MongoClientURI("mongodb+srv://cartm:decena9Ajustar8Dalí2@cluster0.gwdk1.mongodb.net/DB_Contrasenas?retryWrites=true&w=majority");
