@@ -84,7 +84,7 @@ public class FinishPassword {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/con")
-    public Contrasena getPoss(@RequestParam(required = false, defaultValue = "World") String name)throws PasswordException {
+    public Contrasena getPoss( )throws PasswordException {
         System.out.println("==== get greeting ====");
         return new Contrasena("lola", 0);
     }
