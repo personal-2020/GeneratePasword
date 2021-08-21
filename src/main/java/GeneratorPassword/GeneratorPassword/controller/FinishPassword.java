@@ -83,7 +83,7 @@ public class FinishPassword {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/con")
+    @GetMapping("/getPassword/con")
     public Contrasena con(@RequestParam(required = false, defaultValue = "World") String name) {
         System.out.println("==== get greeting ====");
         return new Contrasena("lola", 0);
