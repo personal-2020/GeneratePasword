@@ -16,14 +16,14 @@ public class GeneratorPasswordApplication {
 		SpringApplication.run(GeneratorPasswordApplication.class, args);
 	}
         
-       	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/getPassword/gt").allowedOrigins("localhost:8080");
-			}
-		};
-	}        
+//       	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/getPassword/gt").allowedOrigins("localhost:8080");
+//			}
+//		};
+//	}        
 
 }
