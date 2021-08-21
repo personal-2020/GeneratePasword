@@ -91,12 +91,6 @@ public class FinishPassword {
      * @throws Exception
      */
     //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/con")
-    public Contrasena con(@RequestParam(required = false, defaultValue = "World") String name) {
-        System.out.println("==== get greeting ====");
-        return new Contrasena("lola", 0);
-    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/gtn")
