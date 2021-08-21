@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Cefar -- Dicomatico
  */
 @RestController
-@RequestMapping(value = "/")
+//@RequestMapping(value = "/")
 public class GeneratorController {
 
     @Autowired
