@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 /**
  *
  * @author cefar-dico
@@ -90,12 +92,19 @@ public class FinishPassword {
      */
     //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
     @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/con")
+    public Contrasena con(@RequestParam(required = false, defaultValue = "World") String name) {
+        System.out.println("==== get greeting ====");
+        return new Contrasena("lola", 0);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/gtn")
     //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
     public Contrasena getPasswordNew() throws PasswordException, Exception {
         Contrasena contrasenas;
         try {////Primer paso generar el numero cada vez que entra
-            
+
             String contraseña = "";
             boolean temporal = true;
             while (temporal) {
@@ -150,20 +159,20 @@ public class FinishPassword {
                     od.getListHelp(as);
                     contraseña = od.getContrasena(crp.getArregloFinal());
                 }
-                if(!od.getSizeListContrasen()){
-                    contraseña = od.getContrasena(crp.getArregloFinal());                
+                if (!od.getSizeListContrasen()) {
+                    contraseña = od.getContrasena(crp.getArregloFinal());
                 }
                 //8Paso, entrega de contraseña
                 Contrasena cn = new Contrasena(contraseña);
-                
+
                 if (!mng.isHereOrNot(cn.toString())) {
                     mng.insertData(new Contrasena(contraseña).toString());
                     temporal = false;
                 }
             }
-            contrasenas=new Contrasena(contraseña, 0);
+            contrasenas = new Contrasena(contraseña, 0);
             //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
-            return new Contrasena(contrasenas.getContrasena(),0);
+            return new Contrasena(contrasenas.getContrasena(), 0);
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
