@@ -90,88 +90,88 @@ public class FinishPassword {
      * @throws PasswordException
      * @throws Exception
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/gtn")
-    //@CrossOrigin(origins = "http://localhost:4200")
-    //@GetMapping("/getPassword/gtn")
-    //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
-    public Contrasena getPasswordNew() throws PasswordException, Exception {
-        Contrasena contrasenas;
-        try {////Primer paso generar el numero cada vez que entra
-
-            String contraseña = "";
-            boolean temporal = true;
-            while (temporal) {
-                while (od.getSizeListContrasen()) {
-                    pd.generateNewMatriz();
-                    pd.GenerateRandom();
-                    String numero = pd.numberOfMatriz();
-                    //// SEGUNDO PASO 
-                    if (gn.getNumeros().size() == 0) {
-                        gn.gellAllNum(numero);
-                    } else {
-                        gn.resetNumeros();
-                        gn.gellAllNum(pd.getNumero());
-                    }
-                    //Tercer Paso
-                    List<BigInteger> numeros = new ArrayList<BigInteger>();
-                    List<String> numerosS = new ArrayList<String>();
-                    numeros = gn.getNumeros();
-                    if (numerosS.isEmpty()) {
-                        gn.conversNumb(numeros);
-                    } else {
-                        numerosS.clear();
-                        gn.conversNumb(numeros);
-                    }
-                    numerosS = gn.getNumberConvertido();
-                    //4 Cuarto paso
-                    op.clearSentences();
-                    if (op.getSentence().isEmpty()) {
-                        op.SeparateNumber(numerosS);
-                    } else {
-                        op.clearSentence();
-                        op.SeparateNumber(numerosS);
-                    }
-                    List<List<String>> v = op.getListL();
-                    op.getSentenceOperateNumerate();
-                    //5 paso
-                    List<String> arregloPreFinal = new ArrayList<String>();
-                    List<String> temp = op.getSentence();
-                    if (temp.isEmpty()) {
-                        System.out.println("NO puede generarse, no hay frases para procesar.");
-                        throw new PasswordException("NO puede generarse, no hay frases para procesar.");
-                    } else {
-                        arregloPreFinal = op.getFinalFrase(temp);
-                    }
-                    //6Paso 
-                    List<String> temp1 = new ArrayList<String>();
-                    if (temp1.isEmpty()) {
-                        temp1 = crp.paswords(arregloPreFinal);
-                    }
-                    //7 paso                   
-                    List<String> as = crp.getArregloAyuda();
-                    od.getListHelp(as);
-                    contraseña = od.getContrasena(crp.getArregloFinal());
-                }
-                if (!od.getSizeListContrasen()) {
-                    contraseña = od.getContrasena(crp.getArregloFinal());
-                }
-                //8Paso, entrega de contraseña
-                Contrasena cn = new Contrasena(contraseña);
-                //if (!mng.isHereOrNot(cn.toString())) {
-                if (true) {
-                    //mng.insertData(new Contrasena(contraseña).toString());
-                    temporal = false;
-                }
-            }
-            contrasenas = new Contrasena(contraseña, 0);
-            Contrasena ll=new Contrasena();
-            ll.setContrasena(contraseña);
-            //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
-            return ll;
-
-        } catch (Exception ex) {
-            throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
-        }
-    }
+//    @RequestMapping(method = RequestMethod.GET, path = "/gtn")
+//    //@CrossOrigin(origins = "http://localhost:4200")
+//    //@GetMapping("/getPassword/gtn")
+//    //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
+//    public Contrasena getPasswordNew() throws PasswordException, Exception {
+//        Contrasena contrasenas;
+//        try {////Primer paso generar el numero cada vez que entra
+//
+//            String contraseña = "";
+//            boolean temporal = true;
+//            while (temporal) {
+//                while (od.getSizeListContrasen()) {
+//                    pd.generateNewMatriz();
+//                    pd.GenerateRandom();
+//                    String numero = pd.numberOfMatriz();
+//                    //// SEGUNDO PASO 
+//                    if (gn.getNumeros().size() == 0) {
+//                        gn.gellAllNum(numero);
+//                    } else {
+//                        gn.resetNumeros();
+//                        gn.gellAllNum(pd.getNumero());
+//                    }
+//                    //Tercer Paso
+//                    List<BigInteger> numeros = new ArrayList<BigInteger>();
+//                    List<String> numerosS = new ArrayList<String>();
+//                    numeros = gn.getNumeros();
+//                    if (numerosS.isEmpty()) {
+//                        gn.conversNumb(numeros);
+//                    } else {
+//                        numerosS.clear();
+//                        gn.conversNumb(numeros);
+//                    }
+//                    numerosS = gn.getNumberConvertido();
+//                    //4 Cuarto paso
+//                    op.clearSentences();
+//                    if (op.getSentence().isEmpty()) {
+//                        op.SeparateNumber(numerosS);
+//                    } else {
+//                        op.clearSentence();
+//                        op.SeparateNumber(numerosS);
+//                    }
+//                    List<List<String>> v = op.getListL();
+//                    op.getSentenceOperateNumerate();
+//                    //5 paso
+//                    List<String> arregloPreFinal = new ArrayList<String>();
+//                    List<String> temp = op.getSentence();
+//                    if (temp.isEmpty()) {
+//                        System.out.println("NO puede generarse, no hay frases para procesar.");
+//                        throw new PasswordException("NO puede generarse, no hay frases para procesar.");
+//                    } else {
+//                        arregloPreFinal = op.getFinalFrase(temp);
+//                    }
+//                    //6Paso 
+//                    List<String> temp1 = new ArrayList<String>();
+//                    if (temp1.isEmpty()) {
+//                        temp1 = crp.paswords(arregloPreFinal);
+//                    }
+//                    //7 paso                   
+//                    List<String> as = crp.getArregloAyuda();
+//                    od.getListHelp(as);
+//                    contraseña = od.getContrasena(crp.getArregloFinal());
+//                }
+//                if (!od.getSizeListContrasen()) {
+//                    contraseña = od.getContrasena(crp.getArregloFinal());
+//                }
+//                //8Paso, entrega de contraseña
+//                Contrasena cn = new Contrasena(contraseña);
+//                //if (!mng.isHereOrNot(cn.toString())) {
+//                if (true) {
+//                    //mng.insertData(new Contrasena(contraseña).toString());
+//                    temporal = false;
+//                }
+//            }
+//            contrasenas = new Contrasena(contraseña, 0);
+//            Contrasena ll=new Contrasena();
+//            ll.setContrasena(contraseña);
+//            //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
+//            return ll;
+//
+//        } catch (Exception ex) {
+//            throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
+//        }
+//    }
 
 }
