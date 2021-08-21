@@ -82,7 +82,7 @@ public class FinishPassword {
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/con")
     public Contrasena getPoss( )throws PasswordException {
         System.out.println("==== get greeting ====");
