@@ -52,7 +52,7 @@ public class FinishPassword {
     private CreatePaswword crp;
 
     //@Autowired
-    private MongoDB mng;
+    //private MongoDB mng;
 
     private ArrayList<String> contraseñas = new ArrayList<String>();
 
