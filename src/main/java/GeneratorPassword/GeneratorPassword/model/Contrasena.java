@@ -17,7 +17,7 @@ import org.springframework.data.annotation.Id;
  */
 public class Contrasena {
   
-    @Id
+    //@Id
     private String contrasena;
     
 
