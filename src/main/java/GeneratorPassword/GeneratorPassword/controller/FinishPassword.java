@@ -82,7 +82,6 @@ public class FinishPassword {
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }
     
-  
     /**
      * Esta funcion retorna de manera rapida una contraseña y la coteja con la
      * base de datos para ver si ya fue generada antes.
@@ -92,14 +91,12 @@ public class FinishPassword {
      * @throws Exception
      */
     //@RequestMapping(method = RequestMethod.GET, path = "/gtn")
-
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/gtn")
     //public ResponseEntity<?> getPasswordNew() throws PasswordException, Exception {
     public Contrasena getPasswordNew() throws PasswordException, Exception {
         Contrasena contrasenas;
         try {////Primer paso generar el numero cada vez que entra
-
             String contraseña = "";
             boolean temporal = true;
             while (temporal) {
@@ -159,7 +156,6 @@ public class FinishPassword {
                 }
                 //8Paso, entrega de contraseña
                 Contrasena cn = new Contrasena(contraseña);
-
                 if (!mng.isHereOrNot(cn.toString())) {
                     mng.insertData(new Contrasena(contraseña).toString());
                     temporal = false;
@@ -172,5 +168,4 @@ public class FinishPassword {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
     }
-
 }
