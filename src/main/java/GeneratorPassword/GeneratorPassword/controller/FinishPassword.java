@@ -51,7 +51,7 @@ public class FinishPassword {
     @Autowired
     private CreatePaswword crp;
 
-    @Autowired
+    //@Autowired
     private MongoDB mng;
 
     private ArrayList<String> contraseñas = new ArrayList<String>();
@@ -81,7 +81,7 @@ public class FinishPassword {
         }
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }
-    
+
     /**
      * Esta funcion retorna de manera rapida una contraseña y la coteja con la
      * base de datos para ver si ya fue generada antes.
@@ -97,6 +97,7 @@ public class FinishPassword {
     public Contrasena getPasswordNew() throws PasswordException, Exception {
         Contrasena contrasenas;
         try {////Primer paso generar el numero cada vez que entra
+
             String contraseña = "";
             boolean temporal = true;
             while (temporal) {
@@ -156,16 +157,21 @@ public class FinishPassword {
                 }
                 //8Paso, entrega de contraseña
                 Contrasena cn = new Contrasena(contraseña);
-                if (!mng.isHereOrNot(cn.toString())) {
-                    mng.insertData(new Contrasena(contraseña).toString());
+                //if (!mng.isHereOrNot(cn.toString())) {
+                if (true) {
+                    //mng.insertData(new Contrasena(contraseña).toString());
                     temporal = false;
                 }
             }
             contrasenas = new Contrasena(contraseña, 0);
+            Contrasena ll=new Contrasena();
+            ll.setContrasena(contraseña);
             //return new ResponseEntity<>(contrasenas.toString(), HttpStatus.ACCEPTED);
-            return new Contrasena(contrasenas.getContrasena(), 0);
+            return ll;
+
         } catch (Exception ex) {
             throw new PasswordException("Excepcion Generacion Contraseñas : " + ex.getMessage());
         }
     }
+
 }

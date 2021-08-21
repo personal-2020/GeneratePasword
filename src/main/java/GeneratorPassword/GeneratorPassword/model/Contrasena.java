@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import static java.util.Objects.hash;
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
 /**
  *
