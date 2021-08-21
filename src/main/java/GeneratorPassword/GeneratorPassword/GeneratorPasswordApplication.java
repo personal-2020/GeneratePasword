@@ -21,7 +21,7 @@ public class GeneratorPasswordApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/getPassword/gtn").allowedOrigins("*");
+				registry.addMapping("/getPassword/gt").allowedOrigins("localhost:8080");
 			}
 		};
 	}        
