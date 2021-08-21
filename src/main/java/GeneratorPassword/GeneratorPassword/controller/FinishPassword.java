@@ -81,6 +81,30 @@ public class FinishPassword {
         }
         return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
     }
+    
+    @GetMapping("/getPassword/gtt")
+    public ResponseEntity<?> getPasswordd() throws PasswordException {
+        String contraseña = "";
+        try {
+
+            List<String> as = crp.getArregloAyuda();
+            od.getListHelp(as);
+            if (contraseñas.isEmpty()) {
+                contraseñas = (ArrayList<String>) od.getPaswword(crp.getArregloFinal());
+                System.out.println("lista de contraseñas : " + contraseñas.toString());
+                contraseña = contraseñas.get(0);
+                contraseñas.remove(0);
+            } else {
+                contraseña = contraseñas.get(0);
+                contraseñas.remove(0);
+            }
+        } catch (Exception ex) {
+            throw new PasswordException("Excepcion Creando Contraseña: " + ex.getMessage());
+        }
+        return new ResponseEntity<>(contraseña, HttpStatus.ACCEPTED);
+    }
+    
+    
 
     //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getPassword/con")
