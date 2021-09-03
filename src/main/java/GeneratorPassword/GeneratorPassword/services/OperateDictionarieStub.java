@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
-import GeneratorPassword.GeneratorPassword.model.Diccionario;
+import Generatorpassword.Generatorpassword.services.PasswordException;
+import Generatorpassword.Generatorpassword.model.Diccionario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,6 +45,16 @@ public class OperateDictionarieStub implements OperateDictionarie {
     public List<String> getArregloAyuda() {
         return arregloAyuda;
     }
+    
+    /**
+     * Retorna un valor booleano que representa si el arreglo de contraseñas
+     * esta vacio o no.
+     * @return contrassena.isEMPTY
+     */
+    public Boolean getSizeListContrasen(){
+        return contraseñas.isEmpty();
+    }
+    
     /**
      * Esta funcion retorna solo una contraseña de la lista de contraseñas 
      * o indica que se debe generar una nueva lista.    
@@ -51,7 +62,7 @@ public class OperateDictionarieStub implements OperateDictionarie {
      * contraseña.
      * @return  respuesta
      */
-
+    
     public String getContrasena(List<String> arrFinal) throws PasswordException {
         String respuesta="";
         try{
@@ -59,16 +70,14 @@ public class OperateDictionarieStub implements OperateDictionarie {
             contraseñas = (ArrayList<String>) this.getPaswword(arrFinal);
             if (contraseñas.size() > 0) {
                 System.out.println("lista de contraseñas : " + contraseñas.toString());
-                respuesta = contraseñas.get(0);
-                contraseñas.remove(0);
+                respuesta = contraseñas.remove(0);
             }
 
         } else {
-            respuesta = contraseñas.get(0);
-            contraseñas.remove(0);
+            respuesta = contraseñas.remove(0);
         }
 
-        return respuesta;
+            return respuesta;
         }catch (Exception ex) {
             throw new PasswordException("Excepcion entregando Contraseña: " + ex.getMessage());
         }
@@ -86,6 +95,7 @@ public class OperateDictionarieStub implements OperateDictionarie {
      *
      * @param arregloFinal
      * @return contraseñas
+     * @throws Generatorpassword.Generatorpassword.services.PasswordException
      */
     @Override
     public List<String> getPaswword(List<String> arregloFinal) throws PasswordException{

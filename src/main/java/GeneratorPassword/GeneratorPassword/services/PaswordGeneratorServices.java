@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
-import GeneratorPassword.GeneratorPassword.model.Matriz;
-import GeneratorPassword.GeneratorPassword.model.Tupla;
+import Generatorpassword.Generatorpassword.model.Matriz;
+import Generatorpassword.Generatorpassword.model.Tupla;
 import java.util.List;
 
 

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.controller;
+package Generatorpassword.Generatorpassword.controller;
 
-import GeneratorPassword.GeneratorPassword.services.CreatePaswword;
-import GeneratorPassword.GeneratorPassword.services.GeneratorNumbersServices;
-import GeneratorPassword.GeneratorPassword.services.OpeprateNumerate;
-import GeneratorPassword.GeneratorPassword.services.PasswordException;
-import GeneratorPassword.GeneratorPassword.services.PaswordGeneratorServices;
+import Generatorpassword.Generatorpassword.services.CreatePaswword;
+import Generatorpassword.Generatorpassword.services.GeneratorNumbersServices;
+import Generatorpassword.Generatorpassword.services.OpeprateNumerate;
+import Generatorpassword.Generatorpassword.services.PasswordException;
+import Generatorpassword.Generatorpassword.services.PaswordGeneratorServices;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;

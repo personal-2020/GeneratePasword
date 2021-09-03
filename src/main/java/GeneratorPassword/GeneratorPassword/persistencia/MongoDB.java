@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.persistence;
+package Generatorpassword.Generatorpassword.persistencia;
 
-import GeneratorPassword.GeneratorPassword.model.Contrasena;
-import GeneratorPassword.GeneratorPassword.services.PasswordException;
+
+import Generatorpassword.Generatorpassword.services.PasswordException;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.model;
+package Generatorpassword.Generatorpassword.model;
 
-import GeneratorPassword.GeneratorPassword.services.PasswordException;
+import Generatorpassword.Generatorpassword.services.PasswordException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
 import java.util.List;
 
@@ -24,5 +24,7 @@ public interface OperateDictionarie {
     public List<String> getArregloAyuda() throws PasswordException;
     
     public String getContrasena(List<String> arregloFinal) throws PasswordException;
+    
+    public Boolean getSizeListContrasen() throws PasswordException;
     
 }

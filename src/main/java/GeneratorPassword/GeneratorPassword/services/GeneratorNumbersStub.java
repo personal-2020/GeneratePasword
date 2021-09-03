@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
-import GeneratorPassword.GeneratorPassword.model.ColaDinamica;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;

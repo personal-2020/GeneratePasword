@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
 import java.util.List;
-
+import Generatorpassword.Generatorpassword.services.PasswordException;
 /**
  *
  * @author cefar-dico

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GeneratorPassword.GeneratorPassword.services;
+package Generatorpassword.Generatorpassword.services;
 
-import GeneratorPassword.GeneratorPassword.model.Hourse;
-import GeneratorPassword.GeneratorPassword.model.Matriz;
-import GeneratorPassword.GeneratorPassword.model.Tupla;
+import Generatorpassword.Generatorpassword.model.Hourse;
+import Generatorpassword.Generatorpassword.model.Matriz;
+import Generatorpassword.Generatorpassword.model.Tupla;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -47,8 +47,7 @@ public class PasswordGeneratorStub implements PaswordGeneratorServices {
      */
     @Override
     public void generateNewMatriz(){
-        Tupla posInit = new Tupla((int) (Math.random() * 3), (int) (Math.random() * 4));
-        System.out.println("que posiciones miramos: El1: "+posInit.getElem1()+"--ELEMENTO 2: "+posInit.getElem2());
+        Tupla posInit = new Tupla((int) (Math.random() * 3), (int) (Math.random() * 4));//System.out.println("que posiciones miramos: El1: "+posInit.getElem1()+"--ELEMENTO 2: "+posInit.getElem2());
         ma = new Matriz(4, 5, posInit);
     }
     
