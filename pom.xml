@@ -6,45 +6,38 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.11.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
-    <groupId>GeneratorPassword</groupId>
-    <artifactId>GeneratorPassword</artifactId>
+    <groupId>Generatorpassword</groupId>
+    <artifactId>Generatorpassword</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>GeneratorPassword</name>
-    <description>Firts Version me program</description>
-
+    <name>Generatorpassword</name>
+    <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
+    
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>1.0.0.RELEASE</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
-
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>4.1</version>
         </dependency>
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>2.13.0</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+ 
+            <type>jar</type>
         </dependency>
+        <dependency>
+    <groupId>javax.inject</groupId>
+    <artifactId>javax.inject</artifactId>
+    <version>1</version>
+</dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -67,18 +60,9 @@
             <version>2.7.2</version>
             <type>jar</type>
         </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>3.12.6</version>
-            <type>jar</type>
-        </dependency>
+
         
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>           
-            <type>jar</type>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -92,6 +76,7 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -153,3 +138,4 @@
     </pluginRepositories>
 
 </project>
+    
